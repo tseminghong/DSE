@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Paper - Geography</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for responsiveness and appearance */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Light gray background */
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+        /* Active tab styling */
+        .tab-button.active {
+            background-color: #3b82f6; /* Blue 600 */
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for active tab */
+        }
+        .tab-button:not(.active):hover {
+            background-color: #f3f4f6; /* Gray 100 on hover for inactive */
+        }
+        /* Table row hover effect */
+        tbody tr:hover {
+            background-color: #f9fafb; /* Lighter background on row hover */
+        }
+        /* Download button styling */
+        .download-button {
+            color: #3b82f6; /* Blue 500 */
+            text-decoration: none;
+            transition: all 0.2s ease-in-out;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem; /* rounded-md */
+        }
+        .download-button:hover {
+            text-decoration: underline;
+            background-color: #eff6ff; /* Blue 50 on hover */
+        }
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Add some padding for better scroll positioning */
+        .scroll-section {
+            scroll-margin-top: 2rem;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Header Section -->
+    <header class="flex items-center justify-between p-4 bg-white shadow-sm border-b border-gray-100">
+        <div class="flex items-center space-x-2">
+            <!-- Hamburger Icon -->
+            <svg class="h-6 w-6 text-gray-600 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <span class="font-semibold text-lg text-gray-700">Past Paper</span>
+        </div>
+        <nav class="hidden md:flex items-center space-x-6">
+            <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">Home</a>
+            <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">About</a>
+            <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">Contact</a>
+        </nav>
+        <div class="flex items-center space-x-4">
+            <!-- Search Icon -->
+            <button class="p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                <svg class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </button>
+            <!-- User Icon -->
+            <button class="p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                <svg class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="container p-4 sm:p-6 lg:p-8">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-6 text-gray-900">Geography</h1>
+
+        <!-- Tabs Section -->
+        <div class="flex bg-white p-1 rounded-lg shadow-sm border border-gray-200 mb-8 sticky top-4 z-10">
+            <button id="tab-sample" class="tab-button flex-1 py-2 px-4 text-center rounded-md transition-all duration-300 active">
+                Sample Paper
+            </button>
+            <button id="tab-practice" class="tab-button flex-1 py-2 px-4 text-center rounded-md transition-all duration-300 mx-1 sm:mx-2">
+                Practice Paper
+            </button>
+            <button id="tab-2012-2023" class="tab-button flex-1 py-2 px-4 text-center rounded-md transition-all duration-300">
+                2012-2023
+            </button>
+        </div>
+
+        <!-- All Content Sections (No longer hidden) -->
+        <section id="content-sample" class="bg-white p-6 rounded-lg shadow-md mb-8 scroll-section">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-800">Sample Paper</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tl-lg">
+                                Paper Type
+                            </th>
+                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Paper 1
+                            </th>
+                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Paper 2
+                            </th>
+                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Map
+                            </th>
+                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Answer
+                            </th>
+                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tr-lg">
+                                Performance
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Sample 1</td>
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <a href="Geog\Sample paper\p1.pdf" class="download-button">Download</a>
+                            </td>
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <a href="Geog\Sample paper\p2.pdf" class="download-button">Download</a>
+                            </td>
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <a href="#" class="download-button">Download</a>
+                            </td>
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <a href="Geog/Sample paper/ans.pdf" class="download-button">Download</a>
+                            </td>
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <a href="#" class="download-button">Download</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="content-practice" class="bg-white p-6 rounded-lg shadow-md mb-8 scroll-section">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-800">Practice Paper</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tl-lg">
+                                Paper Type
+                            </th>
+                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Paper 1
+                            </th>
+                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Paper 2
+                            </th>
+                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Map
+                            </th>
+                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Answer
+                            </th>
+                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tr-lg">
+                                Performance
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Practice 1</td>
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <a href="Geog\Practice paper\Paper1.pdf" class="download-button">Download</a>
+                            </td>
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <a href="Geog\Practice paper\Paper2.pdf" class="download-button">Download</a>
+                            </td>
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <a href="#" class="download-button">Download</a>
+                            </td>
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <a href="#" class="download-button">Download</a>
+                            </td>
+                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <a href="#" class="download-button">Download</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="content-2012-2023" class="bg-white p-6 rounded-lg shadow-md mb-8 scroll-section">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-800">2012-2023</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tl-lg">
+                                Year
+                            </th>
+                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Paper 1
+                            </th>
+                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Paper 2
+                            </th>
+                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Map
+                            </th>
+                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Answer
+                            </th>
+                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tr-lg">
+                                Performance
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <!-- Loop for 2012-2023 data -->
+                        <script>
+                            const pastPapersData = [
+                                { 
+                                    year: 2012, 
+                                    paper1: 'Geog/2012/p1.pdf', 
+                                    paper2: 'Geog/2012/p2.pdf', 
+                                    map: 'Geog/2012/map.pdf', 
+                                    answer: 'Geog/2012/ans.pdf', 
+                                    performance: 'Geog/2012/performance .pdf' 
+                                },
+                                { 
+                                    year: 2013, 
+                                    paper1: 'Geog/2013/p1.pdf', 
+                                    paper2: 'Geog/2013/p2.pdf', 
+                                    map: 'Geog/2013/map.pdf', 
+                                    answer: 'Geog/2013/ans.pdf', 
+                                    performance: 'Geog/2013/per.pdf' 
+                                },
+                                { 
+                                    year: 2014, 
+                                    paper1: 'Geog/2014/p1.pdf', 
+                                    paper2: 'Geog/2014/p2.pdf', 
+                                    map: 'Geog/2014/map.pdf', 
+                                    answer: 'Geog/2014/ans.pdf', 
+                                    performance: 'Geog/2014/per.pdf' 
+                                },
+                                { 
+                                    year: 2015, 
+                                    paper1: 'Geog/2015/p1.pdf', 
+                                    paper2: 'Geog/2015/p2.pdf', 
+                                    map: 'Geog/2015/map.pdf', 
+                                    answer: 'Geog/2015/ans.pdf', 
+                                    performance: 'Geog/2015/per.pdf' 
+                                },
+                                { 
+                                    year: 2016, 
+                                    paper1: 'Geog/2016/p1.pdf', 
+                                    paper2: 'Geog/2016/p2.pdf', 
+                                    map: 'Geog/2016/map.pdf', 
+                                    answer: 'Geog/2016/ans.pdf', 
+                                    performance: 'Geog/2016/per.pdf' 
+                                },
+                                { 
+                                    year: 2017, 
+                                    paper1: 'Geog/2017/p1.pdf', 
+                                    paper2: 'Geog/2017/p2.pdf', 
+                                    map: 'Geog/2017/map.pdf', 
+                                    answer: 'Geog/2017/ans.pdf', 
+                                    performance: 'Geog/2017/per.pdf' 
+                                },
+                                { 
+                                    year: 2018, 
+                                    paper1: 'Geog/2018/p1.pdf', 
+                                    paper2: 'Geog/2018/p2.pdf', 
+                                    map: 'Geog/2018/map.pdf', 
+                                    answer: 'Geog/2018/ans.pdf', 
+                                    performance: 'Geog/2018/per.pdf' 
+                                },
+                                { 
+                                    year: 2019, 
+                                    paper1: 'Geog/2019/p1.pdf', 
+                                    paper2: 'Geog/2019/p2.pdf', 
+                                    map: 'Geog/2019/map.pdf', 
+                                    answer: 'Geog/2019/ans.pdf', 
+                                    performance: 'Geog/2019/per.pdf' 
+                                },
+                                { 
+                                    year: 2020, 
+                                    paper1: 'Geog/2020/p1.pdf', 
+                                    paper2: 'Geog/2020/p2.pdf', 
+                                    map: 'Geog/2020/map.pdf', 
+                                    answer: 'Geog/2020/ans.pdf', 
+                                    performance: 'Geog/2020/per.pdf' 
+                                },
+                                { 
+                                    year: 2021, 
+                                    paper1: '#', 
+                                    paper2: '#', 
+                                    map: '#', 
+                                    answer: '#', 
+                                    performance: '#' 
+                                },
+                                { 
+                                    year: 2022, 
+                                    paper1: '#', 
+                                    paper2: '#', 
+                                    map: '#', 
+                                    answer: '#', 
+                                    performance: '#' 
+                                },
+                                { 
+                                    year: 2023, 
+                                    paper1: '#', 
+                                    paper2: '#', 
+                                    map: '#', 
+                                    answer: '#', 
+                                    performance: '#' 
+                                },
+                            ];
+
+                            const tbody = document.querySelector('#content-2012-2023 tbody');
+                            pastPapersData.forEach(paper => {
+                                const row = document.createElement('tr');
+                                row.innerHTML = `
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${paper.year}</td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"><a href="${paper.paper1}" class="download-button">Download</a></td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"><a href="${paper.paper2}" class="download-button">Download</a></td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"><a href="${paper.map}" class="download-button">Download</a></td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"><a href="${paper.answer}" class="download-button">Download</a></td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"><a href="${paper.performance}" class="download-button">Download</a></td>
+                                `;
+                                tbody.appendChild(row);
+                            });
+                        </script>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+
+            // Function to scroll to section and update active tab
+            function scrollToSection(sectionId) {
+                const section = document.getElementById('content-' + sectionId);
+                if (section) {
+                    section.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                
+                // Update active tab
+                tabButtons.forEach(button => {
+                    button.classList.remove('active');
+                });
+                document.getElementById('tab-' + sectionId).classList.add('active');
+            }
+
+            // Add click event listeners to tab buttons
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const tabId = this.id.replace('tab-', '');
+                    scrollToSection(tabId);
+                });
+            });
+
+            // Optional: Update active tab based on scroll position
+            const sections = document.querySelectorAll('.scroll-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const sectionId = entry.target.id.replace('content-', '');
+                        tabButtons.forEach(button => {
+                            button.classList.remove('active');
+                        });
+                        document.getElementById('tab-' + sectionId).classList.add('active');
+                    }
+                });
+            }, {
+                threshold: 0.5,
+                rootMargin: '-100px 0px -50% 0px'
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+
+</body>
+</html>
