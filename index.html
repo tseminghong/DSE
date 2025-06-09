@@ -73,7 +73,7 @@
                     { name: 'Chinese', icon: '文', href: '#', active: false },
                     { name: 'English', icon: 'Ab', href: '#', active: false },
                     { name: 'Mathematics', icon: '∫', href: '#', active: false },
-                    { name: 'Economics', icon: '📈', href: '#', active: false },
+                    { name: 'Economics', icon: '📈', href: 'economic.html', active: true },
                     { name: 'Chinese History', icon: '史', href: '#', active: false },
                     { name: 'History', icon: '📜', href: '#', active: false },
                     { name: 'Chemistry', icon: '🧪', href: '#', active: false },
@@ -85,24 +85,23 @@
                 const grid = document.querySelector('.grid');
 
                 subjects.forEach(subject => {
-                    const isGeography = subject.name === 'Geography';
-                    const cardWrapper = isGeography 
+                    const isActive = subject.active;
+                    const cardWrapper = isActive 
                         ? document.createElement('a') 
                         : document.createElement('div');
 
-                    if (isGeography) {
-                        // Use the file name of the page you provided
-                        cardWrapper.href = 'geography.html'; 
+                    if (isActive) {
+                        cardWrapper.href = subject.href; 
                     }
 
-                    cardWrapper.className = `group card relative p-6 bg-white rounded-xl shadow-sm border border-gray-200 text-center cursor-pointer ${!isGeography ? 'disabled grayscale opacity-70' : 'hover:border-blue-500'}`;
+                    cardWrapper.className = `group card relative p-6 bg-white rounded-xl shadow-sm border border-gray-200 text-center cursor-pointer ${!isActive ? 'disabled grayscale opacity-70' : 'hover:border-blue-500'}`;
 
                     cardWrapper.innerHTML = `
-                        <div class="flex justify-center items-center h-16 w-16 bg-gray-100 rounded-full mx-auto mb-4 ${isGeography ? 'group-hover:bg-blue-100' : ''} transition-colors">
+                        <div class="flex justify-center items-center h-16 w-16 bg-gray-100 rounded-full mx-auto mb-4 ${isActive ? 'group-hover:bg-blue-100' : ''} transition-colors">
                             <span class="text-3xl">${subject.icon}</span>
                         </div>
                         <h3 class="text-lg font-bold text-gray-800">${subject.name}</h3>
-                        ${!isGeography ? `
+                        ${!isActive ? `
                             <div class="absolute top-2 right-2 bg-amber-400 text-white text-xs font-semibold px-2 py-1 rounded-full">
                                 SOON
                             </div>
