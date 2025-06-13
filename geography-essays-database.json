@@ -1,0 +1,67 @@
+{
+    "metadata": {
+        "lastUpdated": "2024-06-13",
+        "totalPapers": 12,
+        "categories": ["rock", "river_coastal", "plate_tectonics", "industry", "climate", "population"]
+    },
+    "categories": {
+        "rock": {
+            "name": "Rocks and Weathering",
+            "description": "Topics related to rock formation, weathering, erosion, and geological processes",
+            "keywords": ["weathering", "erosion", "sedimentary", "igneous", "metamorphic", "limestone", "granite", "sandstone"],
+            "essays": []
+        },
+        "river_coastal": {
+            "name": "River and Coastal Environments",
+            "description": "Topics related to river systems, coastal processes, and water management",
+            "keywords": ["river", "coastal", "erosion", "deposition", "delta", "estuary", "beach", "cliff", "longshore drift"],
+            "essays": []
+        },
+        "plate_tectonics": {
+            "name": "Plate Tectonics and Landforms",
+            "description": "Topics related to plate movements, volcanoes, earthquakes, and mountain formation",
+            "keywords": ["plate", "tectonic", "volcano", "earthquake", "mountain", "fold", "fault", "subduction"],
+            "essays": []
+        },
+        "industry": {
+            "name": "Industry and Economic Activities",
+            "description": "Topics related to industrial development, manufacturing, and economic geography",
+            "keywords": ["industry", "manufacturing", "factory", "economic", "development", "trade", "globalization"],
+            "essays": []
+        },
+        "climate": {
+            "name": "Climate and Weather",
+            "description": "Topics related to climate patterns, weather systems, and climate change",
+            "keywords": ["climate", "weather", "temperature", "precipitation", "monsoon", "global warming"],
+            "essays": []
+        },
+        "population": {
+            "name": "Population and Settlement",
+            "description": "Topics related to population distribution, urbanization, and settlement patterns",
+            "keywords": ["population", "urban", "rural", "migration", "settlement", "city"],
+            "essays": []
+        }
+    },
+    "papers": {
+        "2012": {
+            "paper1": {
+                "questions": [],
+                "essays": []
+            },
+            "paper2": {
+                "questions": [],
+                "essays": []
+            }
+        },
+        "2013": {
+            "paper1": {
+                "questions": [],
+                "essays": []
+            },
+            "paper2": {
+                "questions": [],
+                "essays": []
+            }
+        }
+    }
+}

@@ -4,148 +4,755 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Past Paper - Geography</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Custom styles for responsiveness and appearance */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Light gray background */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .container {
+
+        :root {
+            --glass-primary: rgba(255, 255, 255, 0.25);
+            --glass-secondary: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --glass-shadow: rgba(0, 0, 0, 0.15);
+            --glass-highlight: rgba(255, 255, 255, 0.4);
+            --gradient-start: #4CAF50;
+            --gradient-end: #2E7D32;
+            --accent-green: #4CAF50;
+            --accent-blue: #007AFF;
+        }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background particles */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            animation: floatingParticles 20s ease-in-out infinite alternate;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes floatingParticles {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        /* Liquid glass header */
+        .glass-header {
+            position: sticky;
+            top: 0;
+            background: var(--glass-primary);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1.5rem 2rem;
+            z-index: 100;
+        }
+
+        .glass-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--glass-highlight), transparent);
+        }
+
+        .header-content {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        /* Active tab styling */
-        .tab-button.active {
-            background-color: #3b82f6; /* Blue 600 */
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
             color: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for active tab */
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        .tab-button:not(.active):hover {
-            background-color: #f3f4f6; /* Gray 100 on hover for inactive */
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
         }
-        /* Table row hover effect */
-        tbody tr:hover {
-            background-color: #f9fafb; /* Lighter background on row hover */
-        }
-        /* Download button styling */
-        .download-button {
-            color: #3b82f6; /* Blue 500 */
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
-            transition: all 0.2s ease-in-out;
-            padding: 0.25rem 0.5rem;
-            border-radius: 0.375rem; /* rounded-md */
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
         }
+
+        .nav-link:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-1px);
+        }
+
+        /* Main content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            line-height: 1.1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        /* Liquid glass tabs */
+        .tabs-container {
+            position: sticky;
+            top: 100px;
+            z-index: 50;
+            margin-bottom: 2rem;
+        }
+
+        .glass-tabs {
+            display: flex;
+            background: var(--glass-primary);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 0.5rem;
+            gap: 0.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: none;
+            border-radius: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tab-button.active {
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transform: scale(1.02);
+        }
+
+        .tab-button:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .tab-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--glass-highlight), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .tab-button.active::before {
+            opacity: 1;
+        }
+
+        /* Content sections */
+        .content-section {
+            background: var(--glass-primary);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            scroll-margin-top: 120px;
+        }
+
+        .content-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--glass-highlight), transparent);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Glass table */
+        .table-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+        }
+
+        .glass-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table-header {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .table-header th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: white;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .table-row {
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .table-row:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.01);
+        }
+
+        .table-cell {
+            padding: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+
+        .year-cell {
+            font-weight: 700;
+            color: white;
+        }
+
+        /* Download buttons */
+        .download-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
         .download-button:hover {
-            text-decoration: underline;
-            background-color: #eff6ff; /* Blue 50 on hover */
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
         }
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
+
+        .download-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
         }
-        /* Add some padding for better scroll positioning */
-        .scroll-section {
-            scroll-margin-top: 2rem;
+
+        .download-button:hover::before {
+            left: 100%;
+        }
+
+        .unavailable {
+            color: rgba(255, 255, 255, 0.4);
+            font-style: italic;
+        }
+
+        /* Floating elements */
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 60px;
+            height: 60px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 80px;
+            height: 80px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 40px;
+            height: 40px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .main-content {
+                padding: 1rem;
+            }
+
+            .glass-tabs {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+
+            .tab-button {
+                padding: 0.75rem 1rem;
+            }
+
+            .content-section {
+                padding: 1.5rem;
+            }
+
+            .table-container {
+                overflow-x: auto;
+            }
+
+            .hero-title {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Download icon */
+        .download-icon {
+            width: 16px;
+            height: 16px;
+            opacity: 0.8;
+        }
+
+        /* Surprise Me Section Styles */
+        .surprise-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .surprise-intro {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .surprise-description {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .surprise-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            border: none;
+            border-radius: 16px;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 16px rgba(255, 107, 107, 0.3);
+        }
+
+        .surprise-button:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 24px rgba(255, 107, 107, 0.4);
+        }
+
+        .surprise-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .essay-card {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 2rem;
+            animation: slideInUp 0.5s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .essay-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .essay-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .essay-meta span {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        .essay-category {
+            flex-shrink: 0;
+        }
+
+        .category-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .category-rock { background: #FF6B6B; color: white; }
+        .category-river_coastal { background: #4ECDC4; color: white; }
+        .category-plate_tectonics { background: #45B7D1; color: white; }
+        .category-industry { background: #96CEB4; color: white; }
+        .category-climate { background: #FFEAA7; color: #2d3436; }
+        .category-population { background: #DDA0DD; color: white; }
+
+        .essay-content {
+            margin-bottom: 2rem;
+        }
+
+        .essay-question-title {
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .essay-question {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-green);
+        }
+
+        .essay-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .model-answer-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, var(--accent-green), #45a049);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+            justify-content: center;
+            min-width: 200px;
+        }
+
+        .model-answer-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(76, 175, 80, 0.3);
+        }
+
+        .try-another-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+            justify-content: center;
+            min-width: 200px;
+        }
+
+        .try-another-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .refresh-icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Notification styles */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(76, 175, 80, 0.9);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            animation: slideInRight 0.3s ease-out;
+            max-width: 300px;
+            font-weight: 500;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Additional styles for unavailable state */
+        .unavailable {
+            color: rgba(255, 255, 255, 0.4);
+            font-style: italic;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+        }
+
+        .table-row:hover .unavailable {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .notification {
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
     </style>
 </head>
-<body class="min-h-screen">
+<body>
+    <!-- Floating background elements -->
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
 
-    <!-- Header Section -->
-    <header class="flex items-center justify-between p-4 bg-white shadow-sm border-b border-gray-100">
-        <div class="flex items-center space-x-2">
-            <!-- Hamburger Icon -->
-            <svg class="h-6 w-6 text-gray-600 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <span class="font-semibold text-lg text-gray-700">Past Paper</span>
-        </div>
-        <nav class="hidden md:flex items-center space-x-6">
-            <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">Home</a>
-            <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">About</a>
-            <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-200">Contact</a>
-        </nav>
-        <div class="flex items-center space-x-4">
-            <!-- Search Icon -->
-            <button class="p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300">
-                <svg class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-            </button>
-            <!-- User Icon -->
-            <button class="p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300">
-                <svg class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-            </button>
+    <!-- Header -->
+    <header class="glass-header">
+        <div class="header-content">
+            <div class="logo">
+                <span>🌍</span>
+                <span>Geography Papers</span>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="https://hpccss.site" class="nav-link">About</a>
+                <a href="#" class="nav-link">Contact</a>
+            </nav>
         </div>
     </header>
 
-    <!-- Main Content Section -->
-    <main class="container p-4 sm:p-6 lg:p-8">
-        <h1 class="text-3xl sm:text-4xl font-bold mb-6 text-gray-900">Geography</h1>
-
-        <!-- Tabs Section -->
-        <div class="flex bg-white p-1 rounded-lg shadow-sm border border-gray-200 mb-8 sticky top-4 z-10">
-            <button id="tab-sample" class="tab-button flex-1 py-2 px-4 text-center rounded-md transition-all duration-300 active">
-                Sample Paper
-            </button>
-            <button id="tab-practice" class="tab-button flex-1 py-2 px-4 text-center rounded-md transition-all duration-300 mx-1 sm:mx-2">
-                Practice Paper
-            </button>
-            <button id="tab-2012-2023" class="tab-button flex-1 py-2 px-4 text-center rounded-md transition-all duration-300">
-                2012-2023
-            </button>
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="hero-section">
+            <h1 class="hero-title">
+                <span>🌍</span>
+                <span>Geography</span>
+            </h1>
+            <p class="hero-subtitle">Access comprehensive geography past papers, practice materials, and sample papers with our modern interface.</p>
         </div>
 
-        <!-- All Content Sections (No longer hidden) -->
-        <section id="content-sample" class="bg-white p-6 rounded-lg shadow-md mb-8 scroll-section">
-            <h2 class="text-2xl font-semibold mb-4 text-gray-800">Sample Paper</h2>
-            <div class="overflow-x-auto">
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-50">
+        <!-- Tabs -->
+        <div class="tabs-container">
+            <div class="glass-tabs">
+                <button id="tab-sample" class="tab-button active">Sample Paper</button>
+                <button id="tab-practice" class="tab-button">Practice Paper</button>
+                <button id="tab-2012-2023" class="tab-button">2012-2023</button>
+                <button id="tab-surprise" class="tab-button">🎲 Surprise Me</button>
+            </div>
+        </div>
+
+        <!-- Sample Paper Section -->
+        <section id="content-sample" class="content-section">
+            <h2 class="section-title">Sample Paper</h2>
+            <div class="table-container">
+                <table class="glass-table">
+                    <thead class="table-header">
                         <tr>
-                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tl-lg">
-                                Paper Type
-                            </th>
-                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Paper 1
-                            </th>
-                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Paper 2
-                            </th>
-                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Map
-                            </th>
-                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Answer
-                            </th>
-                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tr-lg">
-                                Performance
-                            </th>
+                            <th>Paper Type</th>
+                            <th>Paper 1</th>
+                            <th>Paper 2</th>
+                            <th>Map</th>
+                            <th>Answer</th>
+                            <th>Performance</th>
                         </tr>
                     </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        <tr>
-                            <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Sample 1</td>
-                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
-                                <a href="Geog\Sample paper\p1.pdf" class="download-button">Download</a>
+                    <tbody>
+                        <tr class="table-row">
+                            <td class="table-cell year-cell">Sample 1</td>
+                            <td class="table-cell">
+                                <a href="Geog/Sample paper/p1.pdf" class="download-button">
+                                    <svg class="download-icon" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"/>
+                                    </svg>
+                                    Download
+                                </a>
                             </td>
-                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
-                                <a href="Geog\Sample paper\p2.pdf" class="download-button">Download</a>
+                            <td class="table-cell">
+                                <a href="Geog/Sample paper/p2.pdf" class="download-button">
+                                    <svg class="download-icon" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"/>
+                                    </svg>
+                                    Download
+                                </a>
                             </td>
-                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
-                                <a href="#" class="download-button">Download</a>
+                            <td class="table-cell">
+                                <span class="unavailable">Unavailable</span>
                             </td>
-                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
-                                <a href="Geog/Sample paper/ans.pdf" class="download-button">Download</a>
+                            <td class="table-cell">
+                                <a href="Geog/Sample paper/ans.pdf" class="download-button">
+                                    <svg class="download-icon" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"/>
+                                    </svg>
+                                    Download
+                                </a>
                             </td>
-                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
-                                <a href="#" class="download-button">Download</a>
+                            <td class="table-cell">
+                                <span class="unavailable">Unavailable</span>
                             </td>
                         </tr>
                     </tbody>
@@ -153,49 +760,48 @@
             </div>
         </section>
 
-        <section id="content-practice" class="bg-white p-6 rounded-lg shadow-md mb-8 scroll-section">
-            <h2 class="text-2xl font-semibold mb-4 text-gray-800">Practice Paper</h2>
-            <div class="overflow-x-auto">
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-50">
+        <!-- Practice Paper Section -->
+        <section id="content-practice" class="content-section">
+            <h2 class="section-title">Practice Paper</h2>
+            <div class="table-container">
+                <table class="glass-table">
+                    <thead class="table-header">
                         <tr>
-                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tl-lg">
-                                Paper Type
-                            </th>
-                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Paper 1
-                            </th>
-                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Paper 2
-                            </th>
-                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Map
-                            </th>
-                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Answer
-                            </th>
-                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tr-lg">
-                                Performance
-                            </th>
+                            <th>Paper Type</th>
+                            <th>Paper 1</th>
+                            <th>Paper 2</th>
+                            <th>Map</th>
+                            <th>Answer</th>
+                            <th>Performance</th>
                         </tr>
                     </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        <tr>
-                            <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Practice 1</td>
-                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
-                                <a href="Geog\Practice paper\Paper1.pdf" class="download-button">Download</a>
+                    <tbody>
+                        <tr class="table-row">
+                            <td class="table-cell year-cell">Practice 1</td>
+                            <td class="table-cell">
+                                <a href="Geog/Practice paper/Paper1.pdf" class="download-button">
+                                    <svg class="download-icon" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"/>
+                                    </svg>
+                                    Download
+                                </a>
                             </td>
-                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
-                                <a href="Geog\Practice paper\Paper2.pdf" class="download-button">Download</a>
+                            <td class="table-cell">
+                                <a href="Geog/Practice paper/Paper2.pdf" class="download-button">
+                                    <svg class="download-icon" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"/>
+                                    </svg>
+                                    Download
+                                </a>
                             </td>
-                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
-                                <a href="#" class="download-button">Download</a>
+                            <td class="table-cell">
+                                <span class="unavailable">Unavailable</span>
                             </td>
-                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
-                                <a href="#" class="download-button">Download</a>
+                            <td class="table-cell">
+                                <span class="unavailable">Unavailable</span>
                             </td>
-                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
-                                <a href="#" class="download-button">Download</a>
+                            <td class="table-cell">
+                                <span class="unavailable">Unavailable</span>
                             </td>
                         </tr>
                     </tbody>
@@ -203,166 +809,468 @@
             </div>
         </section>
 
-        <section id="content-2012-2023" class="bg-white p-6 rounded-lg shadow-md mb-8 scroll-section">
-            <h2 class="text-2xl font-semibold mb-4 text-gray-800">2012-2023</h2>
-            <div class="overflow-x-auto">
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-50">
+        <!-- Past Papers 2012-2023 Section -->
+        <section id="content-2012-2023" class="content-section">
+            <h2 class="section-title">Past Papers (2012-2023)</h2>
+            <div class="table-container">
+                <table class="glass-table">
+                    <thead class="table-header">
                         <tr>
-                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tl-lg">
-                                Year
-                            </th>
-                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Paper 1
-                            </th>
-                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Paper 2
-                            </th>
-                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Map
-                            </th>
-                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Answer
-                            </th>
-                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tr-lg">
-                                Performance
-                            </th>
+                            <th>Year</th>
+                            <th>Paper 1</th>
+                            <th>Paper 2</th>
+                            <th>Map</th>
+                            <th>Answer</th>
+                            <th>Performance</th>
                         </tr>
                     </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        <!-- Loop for 2012-2023 data -->
-                        <script>
-                            const pastPapersData = [
-                                { 
-                                    year: 2012, 
-                                    paper1: 'Geog/2012/p1.pdf', 
-                                    paper2: 'Geog/2012/p2.pdf', 
-                                    map: 'Geog/2012/map.pdf', 
-                                    answer: 'Geog/2012/ans.pdf', 
-                                    performance: 'Geog/2012/performance .pdf' 
-                                },
-                                { 
-                                    year: 2013, 
-                                    paper1: 'Geog/2013/p1.pdf', 
-                                    paper2: 'Geog/2013/p2.pdf', 
-                                    map: 'Geog/2013/map.pdf', 
-                                    answer: 'Geog/2013/ans.pdf', 
-                                    performance: 'Geog/2013/per.pdf' 
-                                },
-                                { 
-                                    year: 2014, 
-                                    paper1: 'Geog/2014/p1.pdf', 
-                                    paper2: 'Geog/2014/p2.pdf', 
-                                    map: 'Geog/2014/map.pdf', 
-                                    answer: 'Geog/2014/ans.pdf', 
-                                    performance: 'Geog/2014/per.pdf' 
-                                },
-                                { 
-                                    year: 2015, 
-                                    paper1: 'Geog/2015/p1.pdf', 
-                                    paper2: 'Geog/2015/p2.pdf', 
-                                    map: 'Geog/2015/map.pdf', 
-                                    answer: 'Geog/2015/ans.pdf', 
-                                    performance: 'Geog/2015/per.pdf' 
-                                },
-                                { 
-                                    year: 2016, 
-                                    paper1: 'Geog/2016/p1.pdf', 
-                                    paper2: 'Geog/2016/p2.pdf', 
-                                    map: 'Geog/2016/map.pdf', 
-                                    answer: 'Geog/2016/ans.pdf', 
-                                    performance: 'Geog/2016/per.pdf' 
-                                },
-                                { 
-                                    year: 2017, 
-                                    paper1: 'Geog/2017/p1.pdf', 
-                                    paper2: 'Geog/2017/p2.pdf', 
-                                    map: 'Geog/2017/map.pdf', 
-                                    answer: 'Geog/2017/ans.pdf', 
-                                    performance: 'Geog/2017/per.pdf' 
-                                },
-                                { 
-                                    year: 2018, 
-                                    paper1: 'Geog/2018/p1.pdf', 
-                                    paper2: 'Geog/2018/p2.pdf', 
-                                    map: 'Geog/2018/map.pdf', 
-                                    answer: 'Geog/2018/ans.pdf', 
-                                    performance: 'Geog/2018/per.pdf' 
-                                },
-                                { 
-                                    year: 2019, 
-                                    paper1: 'Geog/2019/p1.pdf', 
-                                    paper2: 'Geog/2019/p2.pdf', 
-                                    map: 'Geog/2019/map.pdf', 
-                                    answer: 'Geog/2019/ans.pdf', 
-                                    performance: 'Geog/2019/per.pdf' 
-                                },
-                                { 
-                                    year: 2020, 
-                                    paper1: 'Geog/2020/p1.pdf', 
-                                    paper2: 'Geog/2020/p2.pdf', 
-                                    map: 'Geog/2020/map.pdf', 
-                                    answer: 'Geog/2020/ans.pdf', 
-                                    performance: 'Geog/2020/per.pdf' 
-                                },
-                                { 
-                                    year: 2021, 
-                                    paper1: 'Geog/2021/p1.pdf', 
-                                    paper2: 'Geog/2021/p2.pdf', 
-                                    map: 'Geog/2021/map.pdf', 
-                                    answer: '#', 
-                                    performance: '#' 
-                                },
-                                { 
-                                    year: 2022, 
-                                    paper1: '#', 
-                                    paper2: '#', 
-                                    map: '#', 
-                                    answer: '#', 
-                                    performance: '#' 
-                                },
-                                { 
-                                    year: 2023, 
-                                    paper1: '#', 
-                                    paper2: '#', 
-                                    map: '#', 
-                                    answer: '#', 
-                                    performance: '#' 
-                                },
-                            ];
-
-                            const tbody = document.querySelector('#content-2012-2023 tbody');
-                            pastPapersData.forEach(paper => {
-                                const row = document.createElement('tr');
-                                row.innerHTML = `
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${paper.year}</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"><a href="${paper.paper1}" class="download-button">Download</a></td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"><a href="${paper.paper2}" class="download-button">Download</a></td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"><a href="${paper.map}" class="download-button">Download</a></td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"><a href="${paper.answer}" class="download-button">Download</a></td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500"><a href="${paper.performance}" class="download-button">Download</a></td>
-                                `;
-                                tbody.appendChild(row);
-                            });
-                        </script>
+                    <tbody id="past-papers-tbody">
+                        <!-- Generated by JavaScript -->
                     </tbody>
                 </table>
+            </div>
+        </section>
+
+        <!-- Surprise Me Section -->
+        <section id="content-surprise" class="content-section" style="display: none;">
+            <h2 class="section-title">🎲 Random Essay Challenge</h2>
+            <div class="surprise-container">
+                <div class="surprise-intro">
+                    <p class="surprise-description">Get a random geography essay question to test your knowledge! Perfect for exam preparation and revision.</p>
+                    <button class="surprise-button" onclick="getRandomEssay()">
+                        <svg class="surprise-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                        </svg>
+                        Get Random Essay Question
+                    </button>
+                </div>
+                
+                <div id="random-essay-card" class="essay-card" style="display: none;">
+                    <div class="essay-header">
+                        <div class="essay-meta">
+                            <span id="essay-year"></span>
+                            <span id="essay-paper"></span>
+                            <span id="essay-question-num"></span>
+                            <span id="essay-marks"></span>
+                        </div>
+                        <div class="essay-category">
+                            <span id="essay-category-badge" class="category-badge"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="essay-content">
+                        <h3 class="essay-question-title">Essay Question:</h3>
+                        <p id="essay-question-text" class="essay-question"></p>
+                    </div>
+                    
+                    <div class="essay-actions">
+                        <button class="model-answer-button" onclick="viewModelAnswer()">
+                            <svg class="download-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+                                <path fill-rule="evenodd" d="M4 5a2 2 0 012-2v1a1 1 0 102 0V3h2v1a1 1 0 102 0V3a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 112 0v1h1a1 1 0 110 2H9v1a1 1 0 11-2 0v-1H6a1 1 0 110-2h1V9z"/>
+                            </svg>
+                            View Model Answer
+                        </button>
+                        <button class="try-another-button" onclick="getRandomEssay()">
+                            <svg class="refresh-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"/>
+                        </svg>
+                        Try Another Question
+                        </button>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <script>
+        // Past papers data - corrected version
+        const pastPapersData = [
+            { 
+                year: 2012, 
+                paper1: 'Geog/2012/p1.pdf', 
+                paper2: 'Geog/2012/p2.pdf', 
+                map: 'Geog/2012/map.pdf', 
+                answer: 'Geog/2012/ans.pdf', 
+                performance: 'Geog/2012/performance.pdf' 
+            },
+            { 
+                year: 2013, 
+                paper1: 'Geog/2013/p1.pdf', 
+                paper2: 'Geog/2013/p2.pdf', 
+                map: 'Geog/2013/map.pdf', 
+                answer: 'Geog/2013/ans.pdf', 
+                performance: 'Geog/2013/per.pdf' 
+            },
+            { 
+                year: 2014, 
+                paper1: 'Geog/2014/p1.pdf', 
+                paper2: 'Geog/2014/p2.pdf', 
+                map: 'Geog/2014/map.pdf', 
+                answer: 'Geog/2014/ans.pdf', 
+                performance: 'Geog/2014/per.pdf' 
+            },
+            { 
+                year: 2015, 
+                paper1: 'Geog/2015/p1.pdf', 
+                paper2: 'Geog/2015/p2.pdf', 
+                map: 'Geog/2015/map.pdf', 
+                answer: 'Geog/2015/ans.pdf', 
+                performance: 'Geog/2015/per.pdf' 
+            },
+            { 
+                year: 2016, 
+                paper1: 'Geog/2016/p1.pdf', 
+                paper2: 'Geog/2016/p2.pdf', 
+                map: 'Geog/2016/map.pdf', 
+                answer: 'Geog/2016/ans.pdf', 
+                performance: 'Geog/2016/per.pdf' 
+            },
+            { 
+                year: 2017, 
+                paper1: 'Geog/2017/p1.pdf', 
+                paper2: 'Geog/2017/p2.pdf', 
+                map: 'Geog/2017/map.pdf', 
+                answer: 'Geog/2017/ans.pdf', 
+                performance: 'Geog/2017/per.pdf' 
+            },
+            { 
+                year: 2018, 
+                paper1: 'Geog/2018/p1.pdf', 
+                paper2: 'Geog/2018/p2.pdf', 
+                map: 'Geog/2018/map.pdf', 
+                answer: 'Geog/2018/ans.pdf', 
+                performance: 'Geog/2018/per.pdf' 
+            },
+            { 
+                year: 2019, 
+                paper1: 'Geog/2019/p1.pdf', 
+                paper2: 'Geog/2019/p2.pdf', 
+                map: 'Geog/2019/map.pdf', 
+                answer: 'Geog/2019/ans.pdf', 
+                performance: 'Geog/2019/per.pdf' 
+            },
+            { 
+                year: 2020, 
+                paper1: 'Geog/2020/p1.pdf', 
+                paper2: 'Geog/2020/p2.pdf', 
+                map: 'Geog/2020/map.pdf', 
+                answer: 'Geog/2020/ans.pdf', 
+                performance: 'Geog/2020/per.pdf' 
+            },
+            { 
+                year: 2021, 
+                paper1: 'Geog/2021/p1.pdf', 
+                paper2: 'Geog/2021/p2.pdf', 
+                map: 'Geog/2021/map.pdf', 
+                answer: 'Geog/2021/ans.pdf', 
+                performance: 'Geog/2021/per.pdf' 
+            },
+            { 
+                year: 2022, 
+                paper1: 'Geog/2022/p1.pdf', 
+                paper2: 'Geog/2022/p2.pdf', 
+                map: 'Geog/2022/map.pdf', 
+                answer: 'Geog/2022/ans.pdf', 
+                performance: 'Geog/2022/per.pdf' 
+            },
+            { 
+                year: 2023, 
+                paper1: 'Geog/2023/p1.pdf', 
+                paper2: 'Geog/2023/p2.pdf', 
+                map: 'Geog/2023/map.pdf', 
+                answer: 'Geog/2023/ans.pdf', 
+                performance: 'Geog/2023/per.pdf' 
+            }
+        ];
+
+        // Generate download icon HTML
+        const downloadIcon = `
+            <svg class="download-icon" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"/>
+            </svg>
+        `;
+
+        // Function to create download button or unavailable text
+        function createDownloadCell(filePath, label = 'Download') {
+            if (filePath) {
+                return `
+                    <a href="${filePath}" class="download-button" target="_blank">
+                        ${downloadIcon}
+                        ${label}
+                    </a>
+                `;
+            } else {
+                return '<span class="unavailable">Unavailable</span>';
+            }
+        }
+
+        // Generate table rows
+        function generateTableRows() {
+            const tbody = document.getElementById('past-papers-tbody');
+            
+            if (!tbody) {
+                console.error('Table body element not found');
+                return;
+            }
+
+            // Clear existing content
+            tbody.innerHTML = '';
+            
+            pastPapersData.forEach(paper => {
+                const row = document.createElement('tr');
+                row.className = 'table-row';
+                
+                row.innerHTML = `
+                    <td class="table-cell year-cell">${paper.year}</td>
+                    <td class="table-cell">${createDownloadCell(paper.paper1)}</td>
+                    <td class="table-cell">${createDownloadCell(paper.paper2)}</td>
+                    <td class="table-cell">${createDownloadCell(paper.map)}</td>
+                    <td class="table-cell">${createDownloadCell(paper.answer)}</td>
+                    <td class="table-cell">${createDownloadCell(paper.performance)}</td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+        }
+
+        // Extended essay database for surprise feature
+        const geographyEssays = [
+            {
+                id: "2020_p2_q3",
+                year: 2020,
+                paper: "Paper 2",
+                questionNumber: 3,
+                marks: 8,
+                category: "river_coastal",
+                question: "Explain the formation of coastal landforms through erosion and deposition processes. Use examples to support your answer.",
+                answerPath: "Geog/2020/ans.pdf"
+            },
+            {
+                id: "2019_p1_q2",
+                year: 2019,
+                paper: "Paper 1",
+                questionNumber: 2,
+                marks: 6,
+                category: "rock",
+                question: "Describe the process of chemical weathering and explain how it affects different types of rocks.",
+                answerPath: "Geog/2019/ans.pdf"
+            },
+            {
+                id: "2021_p2_q4",
+                year: 2021,
+                paper: "Paper 2",
+                questionNumber: 4,
+                marks: 10,
+                category: "plate_tectonics",
+                question: "Analyze the relationship between plate tectonics and the distribution of earthquakes around the world. Discuss the hazards associated with seismic activities.",
+                answerPath: "Geog/2021/ans.pdf"
+            },
+            {
+                id: "2018_p1_q3",
+                year: 2018,
+                paper: "Paper 1",
+                questionNumber: 3,
+                marks: 8,
+                category: "climate",
+                question: "Explain the factors that influence the climate of Hong Kong. Discuss how climate change might affect the region.",
+                answerPath: "Geog/2018/ans.pdf"
+            },
+            {
+                id: "2020_p1_q1",
+                year: 2020,
+                paper: "Paper 1",
+                questionNumber: 1,
+                marks: 6,
+                category: "rock",
+                question: "Compare and contrast the formation processes of sedimentary and igneous rocks. Provide examples of each type.",
+                answerPath: "Geog/2020/ans.pdf"
+            },
+            {
+                id: "2019_p2_q2",
+                year: 2019,
+                paper: "Paper 2",
+                questionNumber: 2,
+                marks: 12,
+                category: "industry",
+                question: "Evaluate the factors that influence the location of manufacturing industries. Use case studies to illustrate your answer.",
+                answerPath: "Geog/2019/ans.pdf"
+            },
+            {
+                id: "2022_p1_q4",
+                year: 2022,
+                paper: "Paper 1",
+                questionNumber: 4,
+                marks: 8,
+                category: "river_coastal",
+                question: "Describe the formation of river meanders and explain how they change over time through erosion and deposition.",
+                answerPath: "Geog/2022/ans.pdf"
+            },
+            {
+                id: "2021_p1_q3",
+                year: 2021,
+                paper: "Paper 1",
+                questionNumber: 3,
+                marks: 10,
+                category: "population",
+                question: "Analyze the causes and consequences of rural-urban migration in developing countries. Discuss potential solutions to manage this process.",
+                answerPath: "Geog/2021/ans.pdf"
+            },
+            {
+                id: "2018_p2_q1",
+                year: 2018,
+                paper: "Paper 2",
+                questionNumber: 1,
+                marks: 6,
+                category: "plate_tectonics",
+                question: "Explain the formation of fold mountains and describe their characteristic features. Use the Himalayas as an example.",
+                answerPath: "Geog/2018/ans.pdf"
+            },
+            {
+                id: "2023_p2_q3",
+                year: 2023,
+                paper: "Paper 2",
+                questionNumber: 3,
+                marks: 8,
+                category: "climate",
+                question: "Discuss the impacts of global warming on weather patterns and sea levels. Analyze the potential consequences for coastal areas.",
+                answerPath: "Geog/2023/ans.pdf"
+            }
+        ];
+
+        // Category display names
+        const categoryNames = {
+            rock: "Rocks & Weathering",
+            river_coastal: "River & Coastal",
+            plate_tectonics: "Plate Tectonics",
+            industry: "Industry",
+            climate: "Climate",
+            population: "Population"
+        };
+
+        let currentEssay = null;
+
+        // Surprise Me functions
+        function getRandomEssay() {
+            const randomIndex = Math.floor(Math.random() * geographyEssays.length);
+            currentEssay = geographyEssays[randomIndex];
+            displayRandomEssay(currentEssay);
+        }
+
+        function displayRandomEssay(essay) {
+            // Update essay metadata
+            document.getElementById('essay-year').textContent = essay.year;
+            document.getElementById('essay-paper').textContent = essay.paper;
+            document.getElementById('essay-question-num').textContent = `Question ${essay.questionNumber}`;
+            document.getElementById('essay-marks').textContent = `${essay.marks} marks`;
+            
+            // Update category badge
+            const categoryBadge = document.getElementById('essay-category-badge');
+            categoryBadge.textContent = categoryNames[essay.category];
+            categoryBadge.className = `category-badge category-${essay.category}`;
+            
+            // Update question text
+            document.getElementById('essay-question-text').textContent = essay.question;
+            
+            // Show the essay card with animation
+            const essayCard = document.getElementById('random-essay-card');
+            essayCard.style.display = 'block';
+            
+            // Improved scroll positioning for essay card
+            setTimeout(() => {
+                const headerHeight = document.querySelector('.glass-header').offsetHeight;
+                const tabsHeight = document.querySelector('.tabs-container').offsetHeight;
+                const offset = headerHeight + tabsHeight + 30;
+                
+                const cardPosition = essayCard.offsetTop - offset;
+                
+                window.scrollTo({
+                    top: cardPosition,
+                    behavior: 'smooth'
+                });
+            }, 100);
+        }
+
+        function viewModelAnswer() {
+            if (currentEssay && currentEssay.answerPath) {
+                window.open(currentEssay.answerPath, '_blank');
+            } else {
+                showNotification('Model answer not available for this question.', 'warning');
+            }
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'warning' ? '#FF6B6B' : '#4CAF50'};
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 12px;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+                z-index: 1000;
+                animation: slideInRight 0.3s ease-out;
+                max-width: 300px;
+                font-weight: 500;
+            `;
+            notification.textContent = message;
+            
+            // Add animation styles if not already present
+            if (!document.getElementById('notification-styles')) {
+                const style = document.createElement('style');
+                style.id = 'notification-styles';
+                style.textContent = `
+                    @keyframes slideInRight {
+                        from { transform: translateX(100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideInRight 0.3s ease-out reverse';
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 4000);
+        }
+
+        // Tab functionality
         document.addEventListener('DOMContentLoaded', function() {
             const tabButtons = document.querySelectorAll('.tab-button');
+            const sections = document.querySelectorAll('.content-section');
 
-            // Function to scroll to section and update active tab
-            function scrollToSection(sectionId) {
-                const section = document.getElementById('content-' + sectionId);
-                if (section) {
-                    section.scrollIntoView({ 
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+            function showSection(sectionId) {
+                // Hide all sections first
+                sections.forEach(section => {
+                    section.style.display = 'none';
+                });
+                
+                // Show target section
+                const targetSection = document.getElementById('content-' + sectionId);
+                if (targetSection) {
+                    targetSection.style.display = 'block';
+                    
+                    setTimeout(() => {
+                        const headerHeight = document.querySelector('.glass-header').offsetHeight;
+                        const tabsHeight = document.querySelector('.tabs-container').offsetHeight;
+                        const offset = headerHeight + tabsHeight + 20;
+                        
+                        const elementPosition = targetSection.offsetTop - offset;
+                        
+                        window.scrollTo({
+                            top: elementPosition,
+                            behavior: 'smooth'
+                        });
+                    }, 100);
                 }
                 
                 // Update active tab
@@ -376,32 +1284,61 @@
             tabButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const tabId = this.id.replace('tab-', '');
-                    scrollToSection(tabId);
+                    
+                    if (tabId === 'surprise') {
+                        showSection('surprise');
+                        setTimeout(() => {
+                            const essayCard = document.getElementById('random-essay-card');
+                            if (essayCard && essayCard.style.display === 'none') {
+                                getRandomEssay();
+                            }
+                        }, 500);
+                    } else {
+                        showSection(tabId);
+                    }
                 });
             });
 
-            // Optional: Update active tab based on scroll position
-            const sections = document.querySelectorAll('.scroll-section');
+            // Initialize: show first tab by default
+            showSection('sample');
+            
+            // Generate the past papers table
+            generateTableRows();
+
+            // Improved intersection observer
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
+                    if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
                         const sectionId = entry.target.id.replace('content-', '');
                         tabButtons.forEach(button => {
                             button.classList.remove('active');
                         });
-                        document.getElementById('tab-' + sectionId).classList.add('active');
+                        const activeTab = document.getElementById('tab-' + sectionId);
+                        if (activeTab) {
+                            activeTab.classList.add('active');
+                        }
                     }
                 });
             }, {
-                threshold: 0.5,
-                rootMargin: '-100px 0px -50% 0px'
+                threshold: [0.1, 0.5, 0.9],
+                rootMargin: '-140px 0px -50% 0px'
             });
 
             sections.forEach(section => {
                 observer.observe(section);
             });
         });
-    </script>
 
+        // Parallax effect for floating elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.floating-element');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                element.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+            });
+        });
+    </script>
 </body>
 </html>

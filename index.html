@@ -3,121 +3,494 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select Subject - Past Papers</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Past Papers - Liquid Glass</title>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Custom styles for the page */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6; /* A slightly darker gray for contrast */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        /* Style for the "Coming Soon" overlay */
-        .coming-soon-overlay {
+
+        :root {
+            --glass-primary: rgba(255, 255, 255, 0.25);
+            --glass-secondary: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --glass-shadow: rgba(0, 0, 0, 0.15);
+            --glass-highlight: rgba(255, 255, 255, 0.4);
+            --gradient-start: #667eea;
+            --gradient-end: #764ba2;
+            --accent-blue: #007AFF;
+            --accent-purple: #5856D6;
+        }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background particles */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            animation: floatingParticles 20s ease-in-out infinite alternate;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes floatingParticles {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        /* Liquid glass header */
+        .glass-header {
+            position: relative;
+            background: var(--glass-primary);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1.5rem 2rem;
+            z-index: 100;
+        }
+
+        .glass-header::before {
+            content: '';
             position: absolute;
-            inset: 0;
-            background-color: rgba(255, 255, 255, 0.7);
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--glass-highlight), transparent);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+        }
+
+        .nav-link:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-1px);
+        }
+
+        /* Main content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        /* Liquid glass cards grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .glass-card {
+            position: relative;
+            background: var(--glass-primary);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--glass-highlight), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .glass-card:hover::before {
+            opacity: 1;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.15),
+                0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+        }
+
+        .glass-card.disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            filter: grayscale(50%);
+        }
+
+        .glass-card.disabled:hover {
+            transform: none;
+            background: var(--glass-primary);
+            border-color: var(--glass-border);
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 0.75rem; /* rounded-xl */
-            font-weight: 600; /* semibold */
-            color: #374151; /* gray-700 */
-            backdrop-filter: blur(4px);
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
-        /* Show the overlay on hover for disabled cards */
-        .group.disabled:hover .coming-soon-overlay {
+
+        .glass-card:hover .card-icon {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-subtitle {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+        }
+
+        .coming-soon-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+        }
+
+        .coming-soon-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            font-weight: 600;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .glass-card.disabled:hover .coming-soon-overlay {
             opacity: 1;
         }
-        /* Card transition for a smooth effect */
-        .card {
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+        /* Floating elements */
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
         }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+        .floating-element:nth-child(1) {
+            width: 60px;
+            height: 60px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 80px;
+            height: 80px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 40px;
+            height: 40px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .main-content {
+                padding: 2rem 1rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .glass-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
         }
     </style>
 </head>
-<body class="min-h-screen text-gray-800">
+<body>
+    <!-- Floating background elements -->
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
 
-    <!-- Header Section -->
-    <header class="p-4 sm:p-6 bg-white shadow-md border-b border-gray-200">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <h1 class="font-bold text-xl sm:text-2xl text-gray-700">Past Paper Archive</h1>
-            <nav class="hidden md:flex items-center space-x-6">
-                <a href="https://hpccss.site" class="text-gray-600 hover:text-blue-600 transition-colors duration-200">Home</a>
-                <a href="https://hpccss.site" class="text-gray-600 hover:text-blue-600 transition-colors duration-200">About</a>
+    <!-- Header -->
+    <header class="glass-header">
+        <div class="header-content">
+            <div class="logo">Past Paper Archive</div>
+            <nav class="nav-links">
+                <a href="https://hpccss.site" class="nav-link">Home</a>
+                <a href="https://hpccss.site" class="nav-link">About</a>
+                <a href="#" class="nav-link">Contact</a>
             </nav>
         </div>
     </header>
 
-    <!-- Main Content: Subject Selection Grid -->
-    <main class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
-        <div class="text-center mb-10 sm:mb-12">
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">Select a Subject</h2>
-            <p class="mt-3 text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">Choose a subject to view available past papers. More subjects will be added soon!</p>
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="hero-section">
+            <h1 class="hero-title">Choose Your Subject</h1>
+            <p class="hero-subtitle">Access comprehensive past papers with our modern, intuitive interface. More subjects are being added regularly.</p>
         </div>
 
-        <!-- Grid container for subject cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8">
-            
-            <!-- Card data -->
-            <script>
-                const subjects = [
-                    { name: 'Geography', icon: '🌍', href: 'geography.html', active: true },
-                    { name: 'Chinese', icon: '文', href: '#', active: false },
-                    { name: 'English', icon: 'Ab', href: '#', active: false },
-                    { name: 'Mathematics', icon: '∫', href: '#', active: false },
-                    { name: 'Economics', icon: '📈', href: 'economic.html', active: true },
-                    { name: 'Chinese History', icon: '史', href: '#', active: false },
-                    { name: 'History', icon: '📜', href: '#', active: false },
-                    { name: 'Chemistry', icon: '🧪', href: '#', active: false },
-                    { name: 'Physics', icon: '⚛️', href: '#', active: false },
-                    { name: 'Biology', icon: '🧬', href: '#', active: false },
-                    { name: 'ICT', icon: '💻', href: '#', active: false },
-                ];
-
-                const grid = document.querySelector('.grid');
-
-                subjects.forEach(subject => {
-                    const isActive = subject.active;
-                    const cardWrapper = isActive 
-                        ? document.createElement('a') 
-                        : document.createElement('div');
-
-                    if (isActive) {
-                        cardWrapper.href = subject.href; 
-                    }
-
-                    cardWrapper.className = `group card relative p-6 bg-white rounded-xl shadow-sm border border-gray-200 text-center cursor-pointer ${!isActive ? 'disabled grayscale opacity-70' : 'hover:border-blue-500'}`;
-
-                    cardWrapper.innerHTML = `
-                        <div class="flex justify-center items-center h-16 w-16 bg-gray-100 rounded-full mx-auto mb-4 ${isActive ? 'group-hover:bg-blue-100' : ''} transition-colors">
-                            <span class="text-3xl">${subject.icon}</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-800">${subject.name}</h3>
-                        ${!isActive ? `
-                            <div class="absolute top-2 right-2 bg-amber-400 text-white text-xs font-semibold px-2 py-1 rounded-full">
-                                SOON
-                            </div>
-                            <div class="coming-soon-overlay">
-                                <span>Coming Soon</span>
-                            </div>
-                        ` : `
-                             <p class="text-sm text-blue-600 font-semibold mt-2">View Papers</p>
-                        `}
-                    `;
-                    
-                    grid.appendChild(cardWrapper);
-                });
-            </script>
+        <!-- Cards Grid -->
+        <div class="cards-grid" id="subjects-grid">
+            <!-- Cards will be generated by JavaScript -->
         </div>
     </main>
 
+    <script>
+        const subjects = [
+            { name: 'Geography', icon: '🌍', href: 'geography.html', active: true },
+            { name: 'Chinese', icon: '文', href: '#', active: false },
+            { name: 'English', icon: 'Ab', href: 'eng.html', active: true },
+            { name: 'Mathematics', icon: '∫', href: '#', active: false },
+            { name: 'Economics', icon: '📈', href: 'economic.html', active: true },
+            { name: 'Chinese History', icon: '史', href: '#', active: false },
+            { name: 'History', icon: '📜', href: '#', active: false },
+            { name: 'Chemistry', icon: '🧪', href: '#', active: false },
+            { name: 'Physics', icon: '⚛️', href: '#', active: false },
+            { name: 'Biology', icon: '🧬', href: '#', active: false },
+            { name: 'ICT', icon: '💻', href: '#', active: false },
+        ];
+
+        const grid = document.getElementById('subjects-grid');
+
+        subjects.forEach((subject, index) => {
+            const isActive = subject.active;
+            const card = document.createElement(isActive ? 'a' : 'div');
+            
+            if (isActive) {
+                card.href = subject.href;
+            }
+            
+            card.className = `glass-card ${!isActive ? 'disabled' : ''}`;
+            
+            // Add entrance animation delay
+            card.style.animationDelay = `${index * 0.1}s`;
+            
+            card.innerHTML = `
+                <div class="card-icon">
+                    <span>${subject.icon}</span>
+                </div>
+                <h3 class="card-title">${subject.name}</h3>
+                <p class="card-subtitle">${isActive ? 'View Papers' : 'Coming Soon'}</p>
+                ${!isActive ? `
+                    <div class="coming-soon-badge">Soon</div>
+                    <div class="coming-soon-overlay">
+                        <span>Coming Soon</span>
+                    </div>
+                ` : ''}
+            `;
+            
+            grid.appendChild(card);
+        });
+
+        // Add entrance animation
+        const cards = document.querySelectorAll('.glass-card');
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        cards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            observer.observe(card);
+        });
+
+        // Parallax effect for floating elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.floating-element');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                element.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+            });
+        });
+
+        // Add subtle mouse tracking for cards
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                if (card.classList.contains('disabled')) return;
+                
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.style.transform = `translateY(-8px) scale(1.02) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                if (card.classList.contains('disabled')) return;
+                card.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+        });
+    </script>
 </body>
 </html>
