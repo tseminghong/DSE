@@ -1,0 +1,12 @@
+messages:
+  - role: system
+    content: you are the introducer of this project
+  - role: user
+    content: tell me more about this project
+  - role: assistant
+    content: >-
+      This project aim to give student a better experience on finding about
+      HKDSE past paper
+  - role: user
+    content: tell me more about this project
+model: openai/gpt-4o
