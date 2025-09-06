@@ -79,7 +79,7 @@
     <div class="container mx-auto p-4 md:p-8">
         <header class="text-center mb-8">
             <h1 class="text-3xl md:text-4xl font-bold text-slate-900">HKDSE 中文科《論仁》互動學習</h1>
-            <p class="mt-2 text-lg text-slate-600">目標：Level 5+，穩操勝券！ (V3.0 終極備試版)</p>
+            <p class="mt-2 text-lg text-slate-600">目標：Level 5+，穩操勝券！ (V5.0 AI評卷官)</p>
         </header>
 
         <!-- Tab Navigation -->
@@ -87,6 +87,7 @@
             <button class="tab-btn active text-sm md:text-base font-medium py-2 px-4 rounded-full border border-slate-300" onclick="showTab(1)">第一部分：仁者的操守</button>
             <button class="tab-btn text-sm md:text-base font-medium py-2 px-4 rounded-full border border-slate-300" onclick="showTab(2)">第二部分：君子與仁</button>
             <button class="tab-btn text-sm md:text-base font-medium py-2 px-4 rounded-full border border-slate-300" onclick="showTab(3)">第三部分：踐仁的方法</button>
+            <button class="tab-btn text-sm md:text-base font-medium py-2 px-4 rounded-full border border-slate-300" onclick="showTab(4)">AI 出題挑戰</button>
         </div>
 
         <main>
@@ -113,7 +114,7 @@
                             <div class="mb-6">
                                 <label class="block font-medium mb-2">1. 在「仁者安仁，知者利仁」一句中，孔子如何區分「仁者」和「知者」？(4分) (DSE 題型)</label>
                                 <textarea id="q1_adv_1" rows="5" class="w-full border border-slate-300 rounded-md p-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" placeholder="請在此輸入你的答案..."></textarea>
-                                <button type="button" onclick="analyzeAnswer('q1_adv_1')" class="mt-2 w-full bg-yellow-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition">AI 智能分析</button>
+                                <button type="button" onclick="analyzeAnswer('q1_adv_1')" class="mt-2 w-full bg-yellow-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition">模擬評卷分析</button>
                                 <div class="loader" id="loader_q1_adv_1"></div>
                                 <div id="feedback_q1_adv_1" class="mt-4"></div>
                             </div>
@@ -123,7 +124,7 @@
                             <div class="mb-6">
                                 <label class="block font-medium mb-2">2. 孔子認為「不仁者」不可以久處約和長處樂，試說明箇中原因。(4分) (DSE 題型)</label>
                                 <textarea id="q1_adv_2" rows="5" class="w-full border border-slate-300 rounded-md p-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" placeholder="請在此輸入你的答案..."></textarea>
-                                <button type="button" onclick="analyzeAnswer('q1_adv_2')" class="mt-2 w-full bg-yellow-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition">AI 智能分析</button>
+                                <button type="button" onclick="analyzeAnswer('q1_adv_2')" class="mt-2 w-full bg-yellow-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition">模擬評卷分析</button>
                                 <div class="loader" id="loader_q1_adv_2"></div>
                                 <div id="feedback_q1_adv_2" class="mt-4"></div>
                             </div>
@@ -157,7 +158,7 @@
                             <div class="mb-6">
                                 <label class="block font-medium mb-2">1. 孔子認為君子應如何持守「仁」？試從兩方面說明。(4分) (DSE 2018)</label>
                                 <textarea id="q2_adv_1" rows="5" class="w-full border border-slate-300 rounded-md p-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" placeholder="請在此輸入你的答案..."></textarea>
-                                <button type="button" onclick="analyzeAnswer('q2_adv_1')" class="mt-2 w-full bg-yellow-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition">AI 智能分析</button>
+                                <button type="button" onclick="analyzeAnswer('q2_adv_1')" class="mt-2 w-full bg-yellow-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition">模擬評卷分析</button>
                                 <div class="loader" id="loader_q2_adv_1"></div>
                                 <div id="feedback_q2_adv_1" class="mt-4"></div>
                             </div>
@@ -167,7 +168,7 @@
                             <div class="mb-6">
                                 <label class="block font-medium mb-2">2. 孔子說：「君子去仁，惡乎成名？」這句話運用了反問，孔子藉此說明甚麼道理？他又如何以君子在不同時候的表現來論證此道理？試加說明。(5分) (DSE 2021)</label>
                                 <textarea id="q2_adv_2" rows="5" class="w-full border border-slate-300 rounded-md p-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" placeholder="請在此輸入你的答案..."></textarea>
-                                <button type="button" onclick="analyzeAnswer('q2_adv_2')" class="mt-2 w-full bg-yellow-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition">AI 智能分析</button>
+                                <button type="button" onclick="analyzeAnswer('q2_adv_2')" class="mt-2 w-full bg-yellow-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition">模擬評卷分析</button>
                                 <div class="loader" id="loader_q2_adv_2"></div>
                                 <div id="feedback_q2_adv_2" class="mt-4"></div>
                             </div>
@@ -201,7 +202,7 @@
                             <div class="mb-6">
                                 <label class="block font-medium mb-2">1. 孔子教導顏淵的「為仁」之方，與上文所說君子對「富貴」與「貧賤」的態度，兩者所持守的原則有何共通之處？(4分) (DSE 題型)</label>
                                 <textarea id="q3_adv_1" rows="5" class="w-full border border-slate-300 rounded-md p-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" placeholder="請在此輸入你的答案..."></textarea>
-                                <button type="button" onclick="analyzeAnswer('q3_adv_1')" class="mt-2 w-full bg-yellow-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition">AI 智能分析</button>
+                                <button type="button" onclick="analyzeAnswer('q3_adv_1')" class="mt-2 w-full bg-yellow-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition">模擬評卷分析</button>
                                 <div class="loader" id="loader_q3_adv_1"></div>
                                 <div id="feedback_q3_adv_1" class="mt-4"></div>
                             </div>
@@ -211,7 +212,7 @@
                             <div class="mb-6">
                                 <label class="block font-medium mb-2">2. 「非禮勿視，非禮勿聽，非禮勿言，非禮勿動」如何體現「克己」的精神？試加以說明。(4分) (DSE 題型)</label>
                                 <textarea id="q3_adv_2" rows="5" class="w-full border border-slate-300 rounded-md p-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" placeholder="請在此輸入你的答案..."></textarea>
-                                <button type="button" onclick="analyzeAnswer('q3_adv_2')" class="mt-2 w-full bg-yellow-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition">AI 智能分析</button>
+                                <button type="button" onclick="analyzeAnswer('q3_adv_2')" class="mt-2 w-full bg-yellow-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition">模擬評卷分析</button>
                                 <div class="loader" id="loader_q3_adv_2"></div>
                                 <div id="feedback_q3_adv_2" class="mt-4"></div>
                             </div>
@@ -221,6 +222,55 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Section 4: AI Question Generator -->
+            <div id="tab4" class="content-section">
+                <h2 class="text-2xl font-bold mb-4 text-purple-700 border-l-4 border-purple-700 pl-3">AI 出題挑戰</h2>
+                <div class="quiz-card">
+                    <h3 class="text-xl font-semibold mb-3">AI 智能出題官</h3>
+                    <p class="text-slate-600 mb-4">選擇你想要挑戰的範圍，AI 將會為你生成一道全新的 DSE 風格題目。這是檢驗你真正實力的好機會！</p>
+                    
+                    <div class="mb-4">
+                        <label for="aiScope" class="block font-medium mb-2">請選擇出題範圍：</label>
+                        <select id="aiScope" class="w-full border border-slate-300 rounded-md p-2">
+                            <option value="part1">第一部分：仁者的操守</option>
+                            <option value="part2">第二部分：君子與仁</option>
+                            <option value="part3">第三部分：踐仁的方法</option>
+                            <option value="all">綜合全文</option>
+                        </select>
+                    </div>
+
+                    <button id="generateBtn" onclick="generateAIQuestion()" class="w-full bg-purple-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-purple-700 transition flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="mr-2" viewBox="0 0 16 16">
+                            <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732L2.438 12.366a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"/>
+                        </svg>
+                        開始生成題目
+                    </button>
+
+                    <div class="loader" id="aiLoader"></div>
+                    <div id="aiError" class="feedback incorrect mt-4" style="display: none;"></div>
+                    
+                    <div id="aiQuestionContainer" class="note-card mt-6" style="display: none;">
+                        <h4 class="font-bold text-lg text-slate-800">✨ AI 生成的新挑戰：</h4>
+                        <p id="aiGeneratedQuestion" class="mt-2 text-lg"></p>
+                        <textarea id="aiUserAnswer" rows="5" class="mt-4 w-full border border-slate-300 rounded-md p-2 focus:ring-2 focus:ring-purple-500" placeholder="請在此輸入你的答案..."></textarea>
+                        
+                        <div class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            <button onclick="analyzeAIAnswer()" class="w-full bg-yellow-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition">AI 智能評卷</button>
+                            <button onclick="showAIMarkingScheme()" class="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition">顯示參考答案</button>
+                        </div>
+
+                        <div class="loader" id="aiAnalysisLoader"></div>
+                        <div id="aiAnalysisFeedback" class="mt-4"></div>
+                        
+                        <div id="aiMarkingSchemeContainer" class="feedback correct mt-4" style="display: none;">
+                             <p class="font-bold">參考評分標準：</p>
+                             <div id="aiGeneratedMarkingScheme" class="whitespace-pre-wrap"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </main>
     </div>
 
@@ -235,7 +285,8 @@
             document.querySelector(`.tab-btn:nth-child(${tabIndex})`).classList.add('active');
             document.getElementById(`tab${tabIndex}`).classList.add('active');
         }
-
+        
+        // --- Existing solution and marking schemes ---
         const solutions = {
             q1_adv_1: '孔子從動機和境界上區分兩者：(1)「仁者」行仁是發自內心，自然而然地實踐，視仁德為安身立命之所，境界較高。(2)「知者」行仁則是功利性的，因為知道仁德能為自己帶來好處（如名聲、利益），才去實行，境界較次。',
             q1_adv_2: '因為不仁者內心沒有仁德作為依歸：(1) 當他們處於窮困(約)時，由於無法安守，便會失去道德底線，胡作非為。(2) 當他們處於安樂時，由於不懂克制，便會放縱自己，驕奢淫逸。因此兩種情況都無法長久安處。',
@@ -248,47 +299,27 @@
         const markingSchemes = {
             q1_adv_1: {
                 totalPoints: 4,
-                points: [
-                    { text: ['仁者', '安仁', '內心', '自然', '安身立命'], score: 2, feedback: '準確指出「仁者」行仁是發自內心、安然的境界。' },
-                    { text: ['知者', '利仁', '功利', '好處', '利益'], score: 2, feedback: '準確指出「知者」行仁是出於功利計算。' }
-                ]
+                points: [ { text: ['仁者', '安仁', '內心', '自然', '安身立命'], score: 2, feedback: '準確指出「仁者」行仁是發自內心、安然的境界。' }, { text: ['知者', '利仁', '功利', '好處', '利益'], score: 2, feedback: '準確指出「知者」行仁是出於功利計算。' } ]
             },
             q1_adv_2: {
                 totalPoints: 4,
-                points: [
-                    { text: ['約', '窮困', '胡作非為', '為非作歹'], score: 2, feedback: '能解釋為何不仁者不能久處「約」。' },
-                    { text: ['樂', '安樂', '放縱', '驕奢淫逸'], score: 2, feedback: '能解釋為何不仁者不能長處「樂」。' }
-                ]
+                points: [ { text: ['約', '窮困', '胡作非為', '為非作歹'], score: 2, feedback: '能解釋為何不仁者不能久處「約」。' }, { text: ['樂', '安樂', '放縱', '驕奢淫逸'], score: 2, feedback: '能解釋為何不仁者不能長處「樂」。' } ]
             },
             q2_adv_1: {
                 totalPoints: 4,
-                points: [
-                    { text: ['富貴', '貧賤', '道', '原則', '不處', '不去'], score: 2, feedback: '能指出君子以「道」為原則來面對富貴貧賤。' },
-                    { text: ['時刻', '恆常', '終食', '造次', '顛沛'], score: 2, feedback: '能指出君子在任何時刻都堅守仁德。' }
-                ]
+                points: [ { text: ['富貴', '貧賤', '道', '原則', '不處', '不去'], score: 2, feedback: '能指出君子以「道」為原則來面對富貴貧賤。' }, { text: ['時刻', '恆常', '終食', '造次', '顛沛'], score: 2, feedback: '能指出君子在任何時刻都堅守仁德。' } ]
             },
             q2_adv_2: {
                 totalPoints: 5,
-                points: [
-                    { text: ['反問', '根本', '成名'], score: 1, feedback: '能指出反問句的道理：仁是成名的根本。' },
-                    { text: ['恆常', '終食'], score: 2, feedback: '能說明君子在短暫時間亦持守仁。' },
-                    { text: ['造次', '顛沛'], score: 2, feedback: '能說明君子在困頓時刻也持守仁。' }
-                ]
+                points: [ { text: ['反問', '根本', '成名'], score: 1, feedback: '能指出反問句的道理：仁是成名的根本。' }, { text: ['恆常', '終食'], score: 2, feedback: '能說明君子在短暫時間亦持守仁。' }, { text: ['造次', '顛沛'], score: 2, feedback: '能說明君子在困頓時刻也持守仁。' } ]
             },
             q3_adv_1: {
                 totalPoints: 4,
-                points: [
-                    { text: ['共通', '標準', '約束', '克制', '慾望'], score: 2, feedback: '能點出共通原則是「用外在標準克制個人慾望」。' },
-                    { text: ['道', '禮'], score: 2, feedback: '能分別指出君子用「道」和顏淵用「禮」作為具體標準。' }
-                ]
+                points: [ { text: ['共通', '標準', '約束', '克制', '慾望'], score: 2, feedback: '能點出共通原則是「用外在標準克制個人慾望」。' }, { text: ['道', '禮'], score: 2, feedback: '能分別指出君子用「道」和顏淵用「禮」作為具體標準。' } ]
             },
             q3_adv_2: {
                 totalPoints: 4,
-                points: [
-                    { text: ['克己', '私慾', '克制'], score: 1, feedback: '能準確解釋「克己」的意思。' },
-                    { text: ['四勿', '具體', '方法'], score: 1, feedback: '能指出「四勿」是「克己」的具體方法。' },
-                    { text: ['約束', '視覺', '聽覺', '言語', '行動'], score: 2, feedback: '能結合「四勿」的內容說明如何體現克己精神。' }
-                ]
+                points: [ { text: ['克己', '私慾', '克制'], score: 1, feedback: '能準確解釋「克己」的意思。' }, { text: ['四勿', '具體', '方法'], score: 1, feedback: '能指出「四勿」是「克己」的具體方法。' }, { text: ['約束', '視覺', '聽覺', '言語', '行動'], score: 2, feedback: '能結合「四勿」的內容說明如何體現克己精神。' } ]
             }
         };
 
@@ -298,7 +329,7 @@
             const loader = document.getElementById(`loader_${questionId}`);
             
             if (!userAnswer) {
-                feedbackEl.innerHTML = `<div class="feedback incorrect"><p class="font-bold">請先輸入你的答案，AI才能進行分析！</p></div>`;
+                feedbackEl.innerHTML = `<div class="feedback incorrect"><p class="font-bold">請先輸入你的答案，才能進行分析！</p></div>`;
                 return;
             }
 
@@ -321,7 +352,7 @@
                 });
 
                 let feedbackHTML = `<div class="feedback ai-analysis">
-                    <h4 class="font-bold text-lg mb-2">🤖 AI 智能分析報告</h4>
+                    <h4 class="font-bold text-lg mb-2">🤖 模擬評卷分析報告</h4>
                     <p class="font-semibold">你的預計得分：<span class="text-2xl">${score}</span> / ${scheme.totalPoints}</p>
                     <div class="mt-3">
                         <p class="font-semibold">做得好的地方：</p>
@@ -339,25 +370,183 @@
 
                 loader.style.display = 'none';
                 feedbackEl.innerHTML = feedbackHTML;
-            }, 1500); // 1.5 second delay
+            }, 1500);
         }
 
-        // Event listeners for showing reference answers
-        document.getElementById('quiz1_adv').addEventListener('submit', function(e) {
-            e.preventDefault();
-            document.getElementById('feedback_q1_adv_1').innerHTML = `<div class="feedback correct"><p class="font-bold">第一題參考答案：</p><p>${solutions.q1_adv_1}</p></div>`;
-            document.getElementById('feedback_q1_adv_2').innerHTML = `<div class="feedback correct"><p class="font-bold">第二題參考答案：</p><p>${solutions.q1_adv_2}</p></div>`;
-        });
-        document.getElementById('quiz2_adv').addEventListener('submit', function(e) {
-            e.preventDefault();
-            document.getElementById('feedback_q2_adv_1').innerHTML = `<div class="feedback correct"><p class="font-bold">第一題參考答案：</p><p>${solutions.q2_adv_1}</p></div>`;
-            document.getElementById('feedback_q2_adv_2').innerHTML = `<div class="feedback correct"><p class="font-bold">第二題參考答案：</p><p>${solutions.q2_adv_2}</p></div>`;
-        });
-        document.getElementById('quiz3_adv').addEventListener('submit', function(e) {
-            e.preventDefault();
-            document.getElementById('feedback_q3_adv_1').innerHTML = `<div class="feedback correct"><p class="font-bold">第一題參考答案：</p><p>${solutions.q3_adv_1}</p></div>`;
-            document.getElementById('feedback_q3_adv_2').innerHTML = `<div class="feedback correct"><p class="font-bold">第二題參考答案：</p><p>${solutions.q3_adv_2}</p></div>`;
-        });
+        // --- Event Listeners for showing reference answers ---
+        document.getElementById('quiz1_adv').addEventListener('submit', function(e) { e.preventDefault(); document.getElementById('feedback_q1_adv_1').innerHTML = `<div class="feedback correct"><p class="font-bold">第一題參考答案：</p><p>${solutions.q1_adv_1}</p></div>`; document.getElementById('feedback_q1_adv_2').innerHTML = `<div class="feedback correct"><p class="font-bold">第二題參考答案：</p><p>${solutions.q1_adv_2}</p></div>`; });
+        document.getElementById('quiz2_adv').addEventListener('submit', function(e) { e.preventDefault(); document.getElementById('feedback_q2_adv_1').innerHTML = `<div class="feedback correct"><p class="font-bold">第一題參考答案：</p><p>${solutions.q2_adv_1}</p></div>`; document.getElementById('feedback_q2_adv_2').innerHTML = `<div class="feedback correct"><p class="font-bold">第二題參考答案：</p><p>${solutions.q2_adv_2}</p></div>`; });
+        document.getElementById('quiz3_adv').addEventListener('submit', function(e) { e.preventDefault(); document.getElementById('feedback_q3_adv_1').innerHTML = `<div class="feedback correct"><p class="font-bold">第一題參考答案：</p><p>${solutions.q3_adv_1}</p></div>`; document.getElementById('feedback_q3_adv_2').innerHTML = `<div class="feedback correct"><p class="font-bold">第二題參考答案：</p><p>${solutions.q3_adv_2}</p></div>`; });
+
+
+        // --- New AI Question Generation Logic ---
+        const articleContent = {
+            part1: `子曰：「不仁者，不可以久處約，不可以長處樂。仁者安仁，知者利仁。」`,
+            part2: `子曰：「富與貴，是人之所欲也；不以其道得之，不處也。貧與賤，是人之所惡也；不以其道得之，不去也。君子去仁，惡乎成名？君子無終食之間違仁，造次必於是，顛沛必於是。」`,
+            part3: `顏淵問仁。子曰：「克己復禮為仁。一日克己復禮，天下歸仁焉。為仁由己，而由人乎哉？」顏淵曰：「請問其目。」子曰：「非禮勿視，非禮勿聽，非禮勿言，非禮勿動。」`
+        };
+        articleContent.all = `${articleContent.part1}\n${articleContent.part2}\n${articleContent.part3}`;
+
+        let currentAIMarkingScheme = "";
+
+        async function generateAIQuestion() {
+            const generateBtn = document.getElementById('generateBtn');
+            const loader = document.getElementById('aiLoader');
+            const errorEl = document.getElementById('aiError');
+            const questionContainer = document.getElementById('aiQuestionContainer');
+
+            generateBtn.disabled = true;
+            loader.style.display = 'block';
+            errorEl.style.display = 'none';
+            questionContainer.style.display = 'none';
+            
+            const scope = document.getElementById('aiScope').value;
+            const content = articleContent[scope];
+
+            const systemPrompt = "你是一位經驗豐富的香港中學文憑考試 (HKDSE) 中文科卷一的擬題員。你的任務是根據《論仁》的指定篇章內容，設計一道全新的、具備 DSE 風格的問答題，並提供一份詳細的評分標準 (Marking Scheme)。";
+            const userPrompt = `請根據以下《論仁》的引文，擬定一道4至5分的問答題，並提供評分標準。你的輸出必須是 JSON 格式，包含 "question" (題目文字) 和 "markingScheme" (評分標準文字，請用點列或分段方式清晰說明) 兩個鍵。\n\n引文：「${content}」`;
+
+            try {
+                const apiKey = ""; // Provided by the environment
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                const payload = {
+                    contents: [{ parts: [{ text: userPrompt }] }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
+                    generationConfig: {
+                        responseMimeType: "application/json",
+                        responseSchema: {
+                            type: "OBJECT",
+                            properties: {
+                                "question": { "type": "STRING" },
+                                "markingScheme": { "type": "STRING" }
+                            },
+                            required: ["question", "markingScheme"]
+                        }
+                    }
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API 請求失敗，狀態碼：${response.status}`);
+                }
+
+                const result = await response.json();
+                const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                
+                if (text) {
+                    const data = JSON.parse(text);
+                    document.getElementById('aiGeneratedQuestion').innerText = data.question;
+                    currentAIMarkingScheme = data.markingScheme;
+                    questionContainer.style.display = 'block';
+                    document.getElementById('aiMarkingSchemeContainer').style.display = 'none';
+                    document.getElementById('aiAnalysisFeedback').innerHTML = '';
+                    document.getElementById('aiUserAnswer').value = '';
+                } else {
+                    throw new Error("AI 未能生成有效的題目，請再試一次。");
+                }
+
+            } catch (error) {
+                console.error("AI 生成題目時發生錯誤:", error);
+                errorEl.innerText = `抱歉，生成題目時發生錯誤：${error.message} 請稍後再試。`;
+                errorEl.style.display = 'block';
+            } finally {
+                generateBtn.disabled = false;
+                loader.style.display = 'none';
+            }
+        }
+        
+        async function analyzeAIAnswer() {
+            const userAnswer = document.getElementById('aiUserAnswer').value.trim();
+            const question = document.getElementById('aiGeneratedQuestion').innerText;
+            const markingScheme = currentAIMarkingScheme;
+            
+            const feedbackContainer = document.getElementById('aiAnalysisFeedback');
+            const loader = document.getElementById('aiAnalysisLoader');
+
+            if (!userAnswer) {
+                feedbackContainer.innerHTML = `<div class="feedback incorrect"><p class="font-bold">請先輸入你的答案，AI才能進行評卷！</p></div>`;
+                return;
+            }
+
+            loader.style.display = 'block';
+            feedbackContainer.innerHTML = '';
+            document.getElementById('aiMarkingSchemeContainer').style.display = 'none';
+
+            const systemPrompt = "你是一位經驗豐富的香港中學文憑考試 (HKDSE) 中文科卷一的評卷員。你的任務是根據提供的題目、評分標準和學生答案，進行評分並提供具體的改進建議。";
+            const userPrompt = `這是題目：「${question}」。\n\n這是評分標準：「${markingScheme}」。\n\n這是學生的答案：「${userAnswer}」。\n\n請嚴格根據評分標準，為學生的答案評定一個分數，並提供「做得好的地方」和「可以改進的地方」。你的輸出必須是 JSON 格式，包含 "score" (例如 "3/5 分"), "strengths" (優點，string), 和 "improvements" (改進建議，string) 三個鍵。`;
+
+            try {
+                const apiKey = ""; // Provided by the environment
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                const payload = {
+                    contents: [{ parts: [{ text: userPrompt }] }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
+                    generationConfig: {
+                        responseMimeType: "application/json",
+                        responseSchema: {
+                            type: "OBJECT",
+                            properties: {
+                                "score": { "type": "STRING" },
+                                "strengths": { "type": "STRING" },
+                                "improvements": { "type": "STRING" }
+                            },
+                            required: ["score", "strengths", "improvements"]
+                        }
+                    }
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API 請求失敗，狀態碼：${response.status}`);
+                }
+
+                const result = await response.json();
+                const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                if (text) {
+                    const data = JSON.parse(text);
+                    const feedbackHTML = `<div class="feedback ai-analysis">
+                        <h4 class="font-bold text-lg mb-2">🤖 AI 智能評卷報告</h4>
+                        <p class="font-semibold">預計得分：<span class="text-2xl">${data.score}</span></p>
+                        <div class="mt-3">
+                            <p class="font-semibold">做得好的地方：</p>
+                            <p class="whitespace-pre-wrap">${data.strengths}</p>
+                        </div>
+                        <div class="mt-3">
+                            <p class="font-semibold">可以改進的地方：</p>
+                            <p class="whitespace-pre-wrap">${data.improvements}</p>
+                        </div>
+                    </div>`;
+                    feedbackContainer.innerHTML = feedbackHTML;
+                } else {
+                    throw new Error("AI 未能生成有效的評卷報告。");
+                }
+
+            } catch (error) {
+                console.error("AI 評卷時發生錯誤:", error);
+                feedbackContainer.innerHTML = `<div class="feedback incorrect"><p class="font-bold">抱歉，評卷時發生錯誤：${error.message} 請稍後再試。</p></div>`;
+            } finally {
+                loader.style.display = 'none';
+            }
+        }
+
+        function showAIMarkingScheme() {
+            document.getElementById('aiGeneratedMarkingScheme').innerText = currentAIMarkingScheme;
+            document.getElementById('aiMarkingSchemeContainer').style.display = 'block';
+            document.getElementById('aiAnalysisFeedback').innerHTML = '';
+        }
 
     </script>
 </body>
