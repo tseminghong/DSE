@@ -482,7 +482,7 @@
             const userPrompt = `這是題目：「${question}」。\n\n這是評分標準：「${markingScheme}」。\n\n這是學生的答案：「${userAnswer}」。\n\n請嚴格根據評分標準，為學生的答案評定一個分數，並提供「做得好的地方」和「可以改進的地方」。你的輸出必須是 JSON 格式，包含 "score" (例如 "3/5 分"), "strengths" (優點，string), 和 "improvements" (改進建議，string) 三個鍵。`;
 
             try {
-                const apiKey = ""; // Provided by the environment
+                const apiKey = "AIzaSyDz7mowsqRW97yygraGg7UI90iDH9TQ350"; // Provided by the environment
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
                 const payload = {
