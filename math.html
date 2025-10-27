@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Paper - Mathematics</title>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Reuse geography styles with slight adjustments */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --glass-primary: rgba(255, 255, 255, 0.25);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --glass-highlight: rgba(255, 255, 255, 0.4);
+            --gradient-start: #1E88E5;
+            --gradient-end: #1565C0;
+            --accent: #1E88E5;
+        }
+        body { font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif; background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)); min-height:100vh; }
+        .glass-header { position: sticky; top:0; background: var(--glass-primary); backdrop-filter: blur(20px); padding: 1.5rem 2rem; border-bottom:1px solid var(--glass-border); z-index:100; }
+        .header-content { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
+        .logo { font-size:1.25rem; font-weight:700; color:white; display:flex; gap:0.5rem; align-items:center; }
+        .nav-links { display:flex; gap:1.5rem; }
+        .nav-link { color: rgba(255,255,255,0.9); text-decoration:none; }
+        .main-content { max-width:1200px; margin:0 auto; padding:2rem; }
+        .hero-section { text-align:center; margin-bottom:2.5rem; }
+        .hero-title { font-size: clamp(2rem,5vw,3rem); font-weight:800; color:white; display:flex; gap:1rem; justify-content:center; align-items:center; }
+        .hero-subtitle { color: rgba(255,255,255,0.9); max-width:700px; margin:0.5rem auto 0; }
+        .tabs-container { margin-bottom:1.5rem; }
+        .glass-tabs { display:flex; gap:0.5rem; background: var(--glass-primary); padding:0.5rem; border-radius:16px; }
+        .tab-button { flex:1; padding:0.75rem 1rem; background:transparent; border:none; border-radius:12px; color: rgba(255,255,255,0.9); cursor:pointer; }
+        .tab-button.active { background: rgba(255,255,255,0.2); }
+        .content-section { background: var(--glass-primary); padding:1.5rem; border-radius:16px; border:1px solid var(--glass-border); margin-bottom:1.5rem; }
+        .section-title { color:white; font-weight:700; margin-bottom:1rem; }
+        .table-container { background: rgba(255,255,255,0.06); border-radius:12px; overflow:hidden; border:1px solid var(--glass-border); }
+        table { width:100%; border-collapse:collapse; }
+        thead th { padding:1rem; color:white; text-align:left; font-weight:600; font-size:0.9rem; border-bottom:1px solid rgba(255,255,255,0.08); }
+        td { padding:0.75rem; color: rgba(255,255,255,0.95); }
+        .year-cell { font-weight:700; }
+        .download-button { display:inline-flex; align-items:center; gap:0.5rem; padding:0.4rem 0.8rem; background: rgba(255,255,255,0.12); color:white; border-radius:8px; text-decoration:none; }
+        .unavailable { color: rgba(255,255,255,0.5); font-style:italic; }
+        @media (max-width:768px){ .nav-links{display:none;} .main-content{padding:1rem;} }
+    </style>
+</head>
+<body>
+    <header class="glass-header">
+        <div class="header-content">
+            <div class="logo"><span>∑</span><span>Mathematics Papers</span></div>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="https://hpccss.site" class="nav-link">About</a>
+                <a href="#" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="hero-section">
+            <h1 class="hero-title"><span>∑</span><span>Mathematics</span></h1>
+            <p class="hero-subtitle">Access comprehensive mathematics past papers and practice materials. Files are served from the static `math/` folder.</p>
+        </div>
+
+        <div class="tabs-container">
+            <div class="glass-tabs">
+                <button id="tab-sample" class="tab-button active">Sample Paper</button>
+                <button id="tab-practice" class="tab-button">Practice Paper</button>
+                <button id="tab-past" class="tab-button">2012-2024</button>
+            </div>
+        </div>
+
+        <section id="content-sample" class="content-section">
+            <h2 class="section-title">Sample Paper</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Paper 1</th>
+                            <th>Paper 2</th>
+                            <th>Answer</th>
+                            <th>Performance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="year-cell">Sample 1</td>
+                            <td><a href="math/sample_paper/p1.pdf" class="download-button" target="_blank">Download</a></td>
+                            <td><a href="math/sample_paper/p2.pdf" class="download-button" target="_blank">Download</a></td>
+                            <td><a href="math/sample_paper/answers.pdf" class="download-button" target="_blank">Download</a></td>
+                            <td><span class="unavailable">Unavailable</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="content-practice" class="content-section" style="display:none;">
+            <h2 class="section-title">Practice Paper</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Paper 1</th>
+                            <th>Paper 2</th>
+                            <th>Answer</th>
+                            <th>Performance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="year-cell">Practice 1</td>
+                            <td><a href="math/practice_paper/p1.pdf" class="download-button" target="_blank">Download</a></td>
+                            <td><a href="math/practice_paper/p2.pdf" class="download-button" target="_blank">Download</a></td>
+                            <td><a href="math/practice_paper/answers.pdf" class="download-button" target="_blank">Download</a></td>
+                            <td><span class="unavailable">Unavailable</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="content-past" class="content-section" style="display:none;">
+            <h2 class="section-title">Past Papers (2012-2024)</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Paper 1</th>
+                            <th>Paper 2</th>
+                            <th>Answer</th>
+                            <th>Performance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="past-papers-tbody">
+                        <!-- rows generated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const pastPapersData = [
+            { year:2012, paper1:'math/2012/p1.pdf', paper2:'math/2012/p2.pdf', answer:'math/2012/ans.pdf' },
+            { year:2013, paper1:'math/2013/p1.pdf', paper2:'math/2013/p2.pdf', answer:'math/2013/ans.pdf' },
+            { year:2014, paper1:'math/2014/p1.pdf', paper2:'math/2014/p2.pdf', answer:'math/2014/ans.pdf' },
+            { year:2015, paper1:'math/2015/p1.pdf', paper2:'math/2015/p2.pdf', answer:'math/2015/ans.pdf' },
+            { year:2016, paper1:'math/2016/p1.pdf', paper2:'math/2016/p2.pdf', answer:'math/2016/ans.pdf' },
+            { year:2017, paper1:'math/2017/p1.pdf', paper2:'math/2017/p2.pdf', answer:'math/2017/ans.pdf' },
+            { year:2018, paper1:'math/2018/p1.pdf', paper2:'math/2018/p2.pdf', answer:'math/2018/ans.pdf' },
+            { year:2019, paper1:'math/2019/p1.pdf', paper2:'math/2019/p2.pdf', answer:'math/2019/ans.pdf' },
+            { year:2020, paper1:'math/2020/p1.pdf', paper2:'math/2020/p2.pdf', answer:'math/2020/ans.pdf' },
+            { year:2021, paper1:'math/2021/p1.pdf', paper2:'math/2021/p2.pdf', answer:'math/2021/ans.pdf' },
+            { year:2022, paper1:'math/2022/p1.pdf', paper2:'math/2022/p2.pdf', answer:'math/2022/ans.pdf' },
+            { year:2023, paper1:'math/2023/p1.pdf', paper2:'math/2023/p2.pdf', answer:'math/2023/ans.pdf' },
+            { year:2024, paper1:'math/2024/p1.pdf', paper2:'math/2024/p2.pdf', answer:'math/2024/ans.pdf' }
+        ];
+
+        function createDownloadCell(path) {
+            if (!path) return '<span class="unavailable">Unavailable</span>';
+            return `<a href="${path}" class="download-button" target="_blank">Download</a>`;
+        }
+
+        function generateTableRows(){
+            const tbody = document.getElementById('past-papers-tbody');
+            tbody.innerHTML='';
+            pastPapersData.forEach(p=>{
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="year-cell">${p.year}</td>
+                    <td>${createDownloadCell(p.paper1)}</td>
+                    <td>${createDownloadCell(p.paper2)}</td>
+                    <td>${createDownloadCell(p.answer)}</td>
+                    <td>${createDownloadCell(p.performance)}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', ()=>{
+            const tabs = document.querySelectorAll('.tab-button');
+            const sections = { sample: document.getElementById('content-sample'), practice: document.getElementById('content-practice'), past: document.getElementById('content-past') };
+            function show(id){ Object.values(sections).forEach(s=>s.style.display='none'); sections[id].style.display='block'; tabs.forEach(t=>t.classList.remove('active')); document.getElementById('tab-'+id).classList.add('active'); }
+            tabs.forEach(btn=> btn.addEventListener('click', ()=>{ const id = btn.id.replace('tab-',''); show(id); if(id==='past') generateTableRows(); }));
+            // init
+            show('sample');
+        });
+    </script>
+</body>
+</html>
