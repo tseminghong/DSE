@@ -32,7 +32,7 @@ export const subjects: Subject[] = [
     name: 'Mathematics', 
     icon: '∫', 
     href: '/subject/mathematics', 
-    active: false 
+    active: true 
   },
   { 
     id: 'economics', 
@@ -57,7 +57,7 @@ export const subjects: Subject[] = [
     name: 'History', 
     icon: '📜', 
     href: '/subject/history', 
-    active: false 
+    active: true 
   },
   { 
     id: 'chemistry', 
@@ -297,6 +297,25 @@ export const subjectData: Record<string, SubjectData> = {
         { year: 1, paper1: 'eng/practice_paper/p1_reading.pdf', paper2: 'eng/practice_paper/p2_writing.pdf', dataResponse: 'eng/practice_paper/p3_listening.pdf', map: 'eng/practice_paper/p4_speaking.pdf', answer: 'eng/practice_paper/answers.pdf' }
       ],
       pastPapers: englishPapers
+    }
+  }
+  ,
+  mathematics: {
+    name: 'Mathematics',
+    icon: '∫',
+    papers: {
+      sample: [],
+      practice: [],
+      pastPapers: []
+    }
+  },
+  history: {
+    name: 'History',
+    icon: '📜',
+    papers: {
+      sample: [],
+      practice: [],
+      pastPapers: []
     }
   }
 };
