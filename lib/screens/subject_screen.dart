@@ -95,8 +95,8 @@ class SubjectScreen extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 48),
-                      // Papers list using constants
-                      ...AppConstants.availableYears.take(3).map(
+                      // Papers list using dynamically generated years
+                      ...AppConstants.getAvailableYears(count: 6).map(
                         (year) => Padding(
                           padding: const EdgeInsets.only(bottom: 16),
                           child: _buildPaperCard(

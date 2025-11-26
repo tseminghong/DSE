@@ -43,13 +43,9 @@ class AppConstants {
   // External Links
   static const String homePageUrl = 'https://hpccss.site';
   
-  // Paper Years (can be expanded)
-  static const List<String> availableYears = [
-    '2024',
-    '2023',
-    '2022',
-    '2021',
-    '2020',
-    '2019',
-  ];
+  // Paper Years (dynamically generated based on current year)
+  static List<String> getAvailableYears({int count = 6}) {
+    final currentYear = DateTime.now().year;
+    return List.generate(count, (index) => (currentYear - index).toString());
+  }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../widgets/glass_card.dart';
-import '../models/subject.dart';
+import '../services/subject_service.dart';
 import 'subject_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -9,19 +9,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final subjects = [
-      Subject(name: 'Geography', icon: '🌍', route: 'geography', active: true),
-      Subject(name: 'Chinese', icon: '文', route: 'chinese', active: true),
-      Subject(name: 'English', icon: 'Ab', route: 'english', active: true),
-      Subject(name: 'Mathematics', icon: '∫', route: 'mathematics', active: false),
-      Subject(name: 'Economics', icon: '📈', route: 'economics', active: true),
-      Subject(name: 'Chinese History', icon: '史', route: 'chinese-history', active: false),
-      Subject(name: 'History', icon: '📜', route: 'history', active: false),
-      Subject(name: 'Chemistry', icon: '🧪', route: 'chemistry', active: false),
-      Subject(name: 'Physics', icon: '⚛️', route: 'physics', active: false),
-      Subject(name: 'Biology', icon: '🧬', route: 'biology', active: false),
-      Subject(name: 'ICT', icon: '💻', route: 'ict', active: false),
-    ];
+    final subjects = SubjectService.getAllSubjects();
 
     return Scaffold(
       body: Container(
