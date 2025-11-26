@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../models/subject.dart';
+import '../constants.dart';
 
 class SubjectScreen extends StatelessWidget {
   final Subject subject;
@@ -9,16 +10,9 @@ class SubjectScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Define subject-specific colors
-    Map<String, List<Color>> subjectColors = {
-      'geography': [const Color(0xFF4CAF50), const Color(0xFF2E7D32)],
-      'chinese': [const Color(0xFFE53935), const Color(0xFFC62828)],
-      'english': [const Color(0xFF1E88E5), const Color(0xFF1565C0)],
-      'economics': [const Color(0xFFFF6F00), const Color(0xFFE65100)],
-    };
-
-    final colors = subjectColors[subject.route] ?? 
-                   [const Color(0xFF667eea), const Color(0xFF764ba2)];
+    // Use subject-specific colors from constants
+    final colors = AppConstants.subjectGradients[subject.route] ?? 
+                   [AppConstants.primaryGradientStart, AppConstants.primaryGradientEnd];
 
     return Scaffold(
       body: Container(
@@ -101,23 +95,16 @@ class SubjectScreen extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 48),
-                      // Papers list placeholder
-                      _buildPaperCard(
-                        context,
-                        'DSE 2024',
-                        'Paper 1 & Paper 2',
-                      ),
-                      const SizedBox(height: 16),
-                      _buildPaperCard(
-                        context,
-                        'DSE 2023',
-                        'Paper 1 & Paper 2',
-                      ),
-                      const SizedBox(height: 16),
-                      _buildPaperCard(
-                        context,
-                        'DSE 2022',
-                        'Paper 1 & Paper 2',
+                      // Papers list using constants
+                      ...AppConstants.availableYears.take(3).map(
+                        (year) => Padding(
+                          padding: const EdgeInsets.only(bottom: 16),
+                          child: _buildPaperCard(
+                            context,
+                            'DSE $year',
+                            'Paper 1 & Paper 2',
+                          ),
+                        ),
                       ),
                     ],
                   ),
