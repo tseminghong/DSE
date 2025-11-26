@@ -150,16 +150,10 @@ class _GlassCardState extends State<GlassCard> {
                     // Disabled overlay
                     if (!widget.subject.active)
                       Positioned.fill(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(24),
-                          child: BackdropFilter(
-                            filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.1),
-                                borderRadius: BorderRadius.circular(24),
-                              ),
-                            ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.15),
+                            borderRadius: BorderRadius.circular(24),
                           ),
                         ),
                       ),

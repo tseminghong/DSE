@@ -44,8 +44,8 @@ class AppConstants {
   static const String homePageUrl = 'https://hpccss.site';
   
   // Paper Years (dynamically generated based on current year)
-  static List<String> getAvailableYears({int count = 6}) {
-    final currentYear = DateTime.now().year;
-    return List.generate(count, (index) => (currentYear - index).toString());
+  static List<String> getAvailableYears({int count = 6, int? startYear}) {
+    final year = startYear ?? DateTime.now().year;
+    return List.generate(count, (index) => (year - index).toString());
   }
 }
