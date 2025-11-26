@@ -46,7 +46,7 @@ class HomeScreen extends StatelessWidget {
                 elevation: 0,
                 title: Text(
                   'Past Paper Archive',
-                  style: GoogleFonts.sfProDisplay(
+                  style: GoogleFonts.inter(
                     fontSize: 24,
                     fontWeight: FontWeight.w700,
                     color: Colors.white,
@@ -61,7 +61,7 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       Text(
                         'Choose Your Subject',
-                        style: GoogleFonts.sfProDisplay(
+                        style: GoogleFonts.inter(
                           fontSize: 40,
                           fontWeight: FontWeight.w800,
                           color: Colors.white,
@@ -72,7 +72,7 @@ class HomeScreen extends StatelessWidget {
                       const SizedBox(height: 16),
                       Text(
                         'Access comprehensive past papers with our modern, intuitive interface. More subjects are being added regularly.',
-                        style: GoogleFonts.sfProDisplay(
+                        style: GoogleFonts.inter(
                           fontSize: 18,
                           fontWeight: FontWeight.w400,
                           color: Colors.white.withOpacity(0.8),

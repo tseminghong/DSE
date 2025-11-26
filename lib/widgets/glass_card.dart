@@ -93,7 +93,7 @@ class _GlassCardState extends State<GlassCard> {
                           // Title
                           Text(
                             widget.subject.name,
-                            style: GoogleFonts.sfProDisplay(
+                            style: GoogleFonts.inter(
                               fontSize: 20,
                               fontWeight: FontWeight.w600,
                               color: Colors.white,
@@ -104,7 +104,7 @@ class _GlassCardState extends State<GlassCard> {
                           // Subtitle
                           Text(
                             widget.subject.active ? 'View Papers' : 'Coming Soon',
-                            style: GoogleFonts.sfProDisplay(
+                            style: GoogleFonts.inter(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
                               color: Colors.white.withOpacity(0.7),
@@ -138,7 +138,7 @@ class _GlassCardState extends State<GlassCard> {
                           ),
                           child: Text(
                             'SOON',
-                            style: GoogleFonts.sfProDisplay(
+                            style: GoogleFonts.inter(
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: Colors.white,

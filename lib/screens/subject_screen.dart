@@ -38,7 +38,7 @@ class SubjectScreen extends StatelessWidget {
                 ),
                 title: Text(
                   subject.name,
-                  style: GoogleFonts.sfProDisplay(
+                  style: GoogleFonts.inter(
                     fontSize: 24,
                     fontWeight: FontWeight.w700,
                     color: Colors.white,
@@ -76,7 +76,7 @@ class SubjectScreen extends StatelessWidget {
                       const SizedBox(height: 32),
                       Text(
                         '${subject.name} Past Papers',
-                        style: GoogleFonts.sfProDisplay(
+                        style: GoogleFonts.inter(
                           fontSize: 32,
                           fontWeight: FontWeight.w800,
                           color: Colors.white,
@@ -86,7 +86,7 @@ class SubjectScreen extends StatelessWidget {
                       const SizedBox(height: 16),
                       Text(
                         'Access past examination papers and resources for ${subject.name}.',
-                        style: GoogleFonts.sfProDisplay(
+                        style: GoogleFonts.inter(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
                           color: Colors.white.withOpacity(0.8),
@@ -136,7 +136,7 @@ class SubjectScreen extends StatelessWidget {
             children: [
               Text(
                 year,
-                style: GoogleFonts.sfProDisplay(
+                style: GoogleFonts.inter(
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
                   color: Colors.white,
@@ -145,7 +145,7 @@ class SubjectScreen extends StatelessWidget {
               const SizedBox(height: 4),
               Text(
                 papers,
-                style: GoogleFonts.sfProDisplay(
+                style: GoogleFonts.inter(
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
                   color: Colors.white.withOpacity(0.7),

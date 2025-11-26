@@ -13,7 +13,6 @@ dependencies:
   http: ^1.2.0
   flutter_svg: ^2.0.10
   url_launcher: ^6.2.5
-  flutter_glassmorphism: ^3.0.0
   google_fonts: ^6.2.0
 
 dev_dependencies:
@@ -26,4 +25,3 @@ flutter:
   
   assets:
     - assets/
-    - geography-essays-database.json
