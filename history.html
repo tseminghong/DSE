@@ -30,6 +30,12 @@
         .download-button{ display:inline-flex; align-items:center; gap:0.5rem; padding:0.4rem 0.8rem; background: rgba(255,255,255,0.12); color:white; border-radius:8px; text-decoration:none; }
         .unavailable{ color: rgba(255,255,255,0.5); font-style:italic; }
         @media (max-width:768px){ .nav-links{display:none;} .main-content{padding:1rem;} }
+        #content-past {
+            padding: 20px;
+        }
+        .glass-tabs {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
@@ -52,65 +58,12 @@
 
         <div class="tabs-container">
             <div class="glass-tabs">
-                <button id="tab-sample" class="tab-button active">Sample Paper</button>
-                <button id="tab-practice" class="tab-button">Practice Paper</button>
                 <button id="tab-past" class="tab-button">2012-2021</button>
             </div>
         </div>
 
-        <section id="content-sample" class="content-section">
-            <h2 class="section-title">Sample Paper</h2>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Type</th>
-                            <th>Paper 1</th>
-                            <th>Paper 2</th>
-                            <th>Answer</th>
-                            <th>Performance</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="year-cell">Sample 1</td>
-                            <td><a href="hist/sample_paper/p1.pdf" class="download-button" target="_blank">Download</a></td>
-                            <td><a href="hist/sample_paper/p2.pdf" class="download-button" target="_blank">Download</a></td>
-                            <td><a href="hist/sample_paper/answers.pdf" class="download-button" target="_blank">Download</a></td>
-                            <td><span class="unavailable">Unavailable</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
 
-        <section id="content-practice" class="content-section" style="display:none;">
-            <h2 class="section-title">Practice Paper</h2>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Type</th>
-                            <th>Paper 1</th>
-                            <th>Paper 2</th>
-                            <th>Answer</th>
-                            <th>Performance</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="year-cell">Practice 1</td>
-                            <td><a href="hist/practice_paper/p1.pdf" class="download-button" target="_blank">Download</a></td>
-                            <td><a href="hist/practice_paper/p2.pdf" class="download-button" target="_blank">Download</a></td>
-                            <td><a href="hist/practice_paper/answers.pdf" class="download-button" target="_blank">Download</a></td>
-                            <td><span class="unavailable">Unavailable</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section id="content-past" class="content-section" style="display:none;">
+        <section id="content-past" class="content-section">
             <h2 class="section-title">Past Papers (2012-2021)</h2>
             <div class="table-container">
                 <table>
@@ -149,8 +102,37 @@
 
         function generateTableRows(){ const tbody = document.getElementById('past-papers-tbody'); tbody.innerHTML=''; pastPapersData.forEach(p=>{ const tr = document.createElement('tr'); tr.innerHTML = ` <td class="year-cell">${p.year}</td> <td>${createDownloadCell(p.paper1)}</td> <td>${createDownloadCell(p.paper2)}</td> <td>${createDownloadCell(p.answer)}</td> <td>${createDownloadCell(p.performance)}</td> `; tbody.appendChild(tr); }); }
 
-        document.addEventListener('DOMContentLoaded', ()=>{ const tabs = document.querySelectorAll('.tab-button'); const sections = { sample: document.getElementById('content-sample'), practice: document.getElementById('content-practice'), past: document.getElementById('content-past') }; function show(id){ Object.values(sections).forEach(s=>s.style.display='none'); sections[id].style.display='block'; tabs.forEach(t=>t.classList.remove('active')); document.getElementById('tab-'+id).classList.add('active'); }
-            tabs.forEach(btn=> btn.addEventListener('click', ()=>{ const id = btn.id.replace('tab-',''); show(id); if(id==='past') generateTableRows(); })); show('sample'); });
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tab-button');
+            const sections = {
+                sample: document.getElementById('content-sample'),
+                practice: document.getElementById('content-practice'),
+                past: document.getElementById('content-past')
+            };
+
+            function show(id) {
+                Object.values(sections).forEach(s => { if (s) s.style.display = 'none'; });
+                if (sections[id]) sections[id].style.display = 'block';
+                tabs.forEach(t => t.classList.remove('active'));
+                const tabBtn = document.getElementById('tab-' + id);
+                if (tabBtn) tabBtn.classList.add('active');
+
+                if (id === 'past') generateTableRows();
+            }
+
+            tabs.forEach(btn => btn.addEventListener('click', () => {
+                const id = btn.id.replace('tab-', '');
+                show(id);
+            }));
+
+            // Default to 'past' if available, otherwise show first available section
+            if (sections.past) {
+                show('past');
+            } else {
+                const first = Object.keys(sections).find(k => sections[k]);
+                if (first) show(first);
+            }
+        });
     </script>
 </body>
 </html>
